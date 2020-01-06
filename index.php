@@ -10,3 +10,11 @@ $sql = "CREATE TABLE cars (
     car_pickup DATE DEFAULT NULL,
     car_return DATE DEFAULT NULL
     )";
+
+$sql ="CREATE TABLE customers (
+    customer_id int(12) DEFAULT PRIMARY KEY,
+    customer_name varchar(20) DEFAULT NULL,
+    customer_adress varchar(20) DEFAULT NULL,
+    customer_city varchar(20) DEFAULT NULL,
+    customer_phonenumber int(20) DEFAULT NULL #starts with 0       
+    )";
