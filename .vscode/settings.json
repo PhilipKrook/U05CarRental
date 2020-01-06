@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "carrental",
+            "dialect": "MySQL",
+            "isActive": false,
+            "isConnected": false,
+            "name": "car_rental",
+            "password": "secret",
+            "port": 3306,
+            "server": "192.168.10.10",
+            "username": "homestead"
+        }
+    ]
+}
