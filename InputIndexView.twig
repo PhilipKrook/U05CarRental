@@ -1,0 +1,27 @@
+<h1>Input Index</h1>
+<p>
+<form method="post" action="/listIndex" onsubmit="return validateIndex();">
+  Index: <input type="text" name="index" id="index">
+  <input type="submit" value="Submit">
+</form>
+<p>
+<form method="post" action="/">
+  <input type="submit" value="Main Menu">
+</form>
+
+<script>
+function AllDigits(text) {
+    return text.match(/^[0-9]+$/)
+}
+
+function validateIndex() {
+    let index = document.getElementById("index").value;
+
+    if (allDigits(index)) {
+        return true;
+    } else {
+        alert("\"" + index + "\" is not a valid index.");
+        return false;
+    }
+}
+</script>

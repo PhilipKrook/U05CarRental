@@ -16,16 +16,8 @@ $router = new Router();
 // den färdiga HMTL-koden, som vi skriver ut med echo. 
 echo $router->route($request, $twig); 
 
-
-
-
 require_once 'connect.php';
 include 'Router.php';
-
-
-
-
-
 
 $sql = "CREATE TABLE cars (
     car_id varchar(10) DEFAULT PRIMARY KEY,
@@ -42,6 +34,6 @@ $sql ="CREATE TABLE customers (
     customer_name varchar(20) DEFAULT NULL,
     customer_adress varchar(20) DEFAULT NULL,
     customer_city varchar(20) DEFAULT NULL,
-    customer_phonenumber int(20) DEFAULT NULL #starts with 0       
+    customer_phonenumber int(20) DEFAULT NULL #ska starta på 0       
     )";
 
