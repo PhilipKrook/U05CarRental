@@ -2,7 +2,7 @@
 
 namespace main;
 
-class ListKontroller {
+class ListController {
     public function listAll($twig) {
         $model = new model();
         $personArray = $model->getAll();

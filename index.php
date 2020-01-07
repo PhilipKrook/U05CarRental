@@ -1,7 +1,14 @@
 <?php
 
-use Main\Router;   
-use Main\Request;
+require_once 'request.php';
+use main\request;
+require_once 'router.php';
+use main\router;
+require_once 'MainController.php';
+require_once 'connect.php';
+
+
+
 
 // Vi behöver lägga till dessa tre rader för att kunna använda oss av Twig. 
 require_once __DIR__ . "/vendor/autoload.php"; 
@@ -9,15 +16,14 @@ $loader = new Twig_Loader_Filesystem(__DIR__);
 $twig = new Twig_Environment($loader); 
 
 // Vi skapar objekt av klasserna Request och Router. 
-$request = new Request(); 
-$router = new Router(); 
+$request = new request(); 
+$router = new router(); 
 
 // Vi anropar route i Router-objektet, som returnerar 
 // den färdiga HMTL-koden, som vi skriver ut med echo. 
 echo $router->route($request, $twig); 
 
-require_once 'connect.php';
-include 'Router.php';
+// include 'router.php';
 
 $sql = "CREATE TABLE cars (
     car_id varchar(10) DEFAULT PRIMARY KEY,
