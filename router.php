@@ -2,15 +2,19 @@
 
   namespace main;
 
-  use main\ListController;
-  use main\InputController;
-  use main\MainController;
+  #use main\ListController;
+  require_once 'ListController.php';
+  #use main\InputController;
+  require_once 'InputController.php';
+  #use main\MainController;
+  require_once 'MainController.php';
+  require_once 'model.php';
+
 
   class router {
       public function route($request, $twig) {
           $path = $request->getPath();
           $form = $request->getForm();
-
 
           if ($path == "/listAll") {
               $controller = new ListController();
@@ -29,7 +33,6 @@
               $controller = new MainController();
               return $controller->mainMenu($twig);
           }
-
           else {
               return "Router Error!";
           }
