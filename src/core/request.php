@@ -1,5 +1,6 @@
 <?php
-  namespace main;
+  namespace main\core;
+
 
   class request {
       private $path, $form;

@@ -1,15 +1,12 @@
 <?php
 
-  namespace main;
+  namespace main\core;
 
-  #use main\ListController;
-  require_once 'ListController.php';
-  #use main\InputController;
-  require_once 'InputController.php';
-  #use main\MainController;
-  require_once 'MainController.php';
-  require_once 'model.php';
-
+  use main\controller\ListController;
+  use main\controller\InputController;
+  use main\controller\MainController;
+  use main\model\model;
+  #  require_once '..\controller\MainController.php';
 
   class router {
       public function route($request, $twig) {

@@ -1,6 +1,6 @@
 <?php
 
-  namespace main;
+  namespace main\model;
 
   class model {
       private $personArray;
