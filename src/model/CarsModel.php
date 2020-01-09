@@ -17,6 +17,8 @@ class CarModel extends AbstractModel {
     if (!$customersResult) die($this->db->errorInfo()[2]);
   }
 
+
+
   public function CheckOut($carID, $amount) {
     $customersQuery = "INSERT INTO Events(carID) " .
                       "VALUES(:carID)";
@@ -26,6 +28,8 @@ class CarModel extends AbstractModel {
     $customersResult = $customersStatement->execute($customersParameters);
     if (!$customersResult) die($this->db->errorInfo()[2]);
   }
+
+
 
   public function viewAccount($accountNumber) {
     $eventsQuery = "SELECT * FROM Events WHERE accountNumber = :accountNumber";
@@ -57,6 +61,8 @@ class CarModel extends AbstractModel {
     return ["events" => $events, "accountBalance" => $accountBalance];
   }
 
+
+
   public function transfer($fromAccountNumber) {
     $customersQuery = <<< __HTML
        SELECT CONCAT(customer.customerNumber, ',',
@@ -78,6 +84,8 @@ __HTML;
 
     return ["accountInfoArray" => $accountInfoArray];
   }
+
+
 
   public function transferDone($fromAccountNumber, $toAccountNumber, $amount) {
     $this->db->beginTransaction();
@@ -106,6 +114,8 @@ __HTML;
     $this->db->commit();
   }
 
+
+  
   public function removeAccount($accountNumber) {
     $balanceQuery = "SELECT SUM(amount) FROM Events WHERE accountNumber = :accountNumber";
     $balanceStatement = $this->db->prepare($balanceQuery);

@@ -1,8 +1,8 @@
 <?php
 
-namespace main\exceptions;
-use main\exceptions\exception;
+namespace Bank\Exceptions;
+use Exception;
 
-class NotFoundException extends exception {
-  // Exception
+class NotFoundException extends Exception {
+  // Empty.
 }

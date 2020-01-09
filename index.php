@@ -1,41 +1,37 @@
 <?php
+use Bank\Core\Config;
+use Bank\Core\Router;
+use Bank\Core\Request;
+use Bank\Utils\DependencyInjector;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
-use main\core\request;
-use main\core\router;
-use main\controller\MainController;
-use main\core\connect;
-require_once 'src/core/request.php';
-require_once 'src/core/router.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
-// Vi behöver lägga till dessa tre rader för att kunna använda oss av Twig. 
-require_once __DIR__ . "/vendor/autoload.php"; 
-$loader = new Twig_Loader_Filesystem(__DIR__. '/src/view'); 
-$twig = new Twig_Environment($loader); 
+$config = new Config();
+$dbConfig = $config->get('database');
 
-// Vi skapar objekt av klasserna Request och Router. 
-$request = new request(); 
-$router = new router(); 
+$db = new PDO(
+    'mysql:host=' . $dbConfig['host'] .
+    ';dbname=' . $dbConfig['database'],
+    $dbConfig['user'],
+    $dbConfig['password']
+);
 
-// Vi anropar route i Router-objektet, som returnerar 
-// den färdiga HMTL-koden, som vi skriver ut med echo. 
-echo $router->route($request, $twig); 
+$loader = new Twig_Loader_Filesystem(__DIR__ . '/views');
+$view = new Twig_Environment($loader);
 
-/*
-$sql = "CREATE TABLE cars (
-    car_id varchar(10) DEFAULT PRIMARY KEY,
-    car_make varchar(20) DEFAULT NULL,
-    car_colour varchar(20) DEFAULT NULL,
-    car_year int(4) DEFAULT NULL,
-    car_price int(10) DEFAULT NULL,
-    car_pickup DATE DEFAULT NULL,
-    car_return DATE DEFAULT NULL
-    )";
+$log = new Logger('bookstore');
+$logFile = $config->get('log');
+$log->pushHandler(new StreamHandler($logFile, Logger::DEBUG));
 
-$sql ="CREATE TABLE customers (
-    customer_id int(12) DEFAULT PRIMARY KEY,
-    customer_name varchar(20) DEFAULT NULL,
-    customer_adress varchar(20) DEFAULT NULL,
-    customer_city varchar(20) DEFAULT NULL,
-    customer_phonenumber int(20) DEFAULT NULL #ska starta på 0       
-    )";
-    */
+$di = new DependencyInjector();
+$di->set('PDO', $db);
+$di->set('Utils\Config', $config);
+$di->set('Twig_Environment', $view);
+$di->set('Logger', $log);
+
+echo "<!DOCTYPE html>";
+$router = new Router($di);
+$response = $router->route(new Request());
+echo $response;
