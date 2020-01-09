@@ -6,7 +6,7 @@
   use main\controller\InputController;
   use main\controller\MainController;
   use main\model\model;
-  #  require_once '..\controller\MainController.php';
+  require_once __DIR__. '/../controller/MainController.php';
 
   class router {
       public function route($request, $twig) {

@@ -3,14 +3,13 @@
 use main\core\request;
 use main\core\router;
 use main\controller\MainController;
-use main\src\core\connect;
+use main\core\connect;
 require_once 'src/core/request.php';
 require_once 'src/core/router.php';
 
-
 // Vi behöver lägga till dessa tre rader för att kunna använda oss av Twig. 
 require_once __DIR__ . "/vendor/autoload.php"; 
-$loader = new Twig_Loader_Filesystem(__DIR__); 
+$loader = new Twig_Loader_Filesystem(__DIR__. '/src/view'); 
 $twig = new Twig_Environment($loader); 
 
 // Vi skapar objekt av klasserna Request och Router. 
