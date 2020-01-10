@@ -13,29 +13,49 @@ class CustomerController extends AbstractController {
   public function customerAdded() {
     $form = $this->request->getForm();
     $customerName = $form["customerName"];
+    $customerID = $form["customerID"];
+    $customerAddress = $form["customerAddress"];
+    $customerPostal = $form["customerPostal"];
+    $customerPhone = $form["customerPhone"];
     $customerModel = new CustomerModel($this->db);
-    $customerNumber = $customerModel->addCustomer($customerName);
+    $customerNumber = $customerModel->addCustomer($customerName, $customerID, $customerAddress, $customerPostal, $customerPhone);
     $properties = ["customerNumber" => $customerNumber,
-                   "customerName" => $customerName];
+                   "customerName" => $customerName,
+                   "customerID" => $customerID,
+                   "customerAddress" => $customerAddress,
+                   "customerPostal" => $customerPostal,
+                   "customerPhone" => $customerPhone];
     return $this->render("CustomerAdded.twig", $properties);
   }    
 
-  public function editCustomer($customerNumber, $customerName) {
+  public function editCustomer($customerNumber, $customerName, $customerAddress, $customerPostal, $customerPhone) {
     //$customerName = $map["customerName"];
     //$customerNumber = $map["customerNumber"];      
     $properties = ["customerNumber" => $customerNumber,
-                   "customerName" => $customerName];
+                   "customerName" => $customerName,
+                   "customerAddress" => $customerAddress,
+                   "customerPostal" => $customerPostal,
+                   "customerPhone" => $customerPhone];
     return $this->render("EditCustomer.twig", $properties);
   }
     
-  public function customerEdited($customerNumber, $customerOldName) {
+  public function customerEdited($customerNumber, $customerOldName, $customerOldAddress, $customerOldPostal, $customerOldPhone) {
     $form = $this->request->getForm();
     $customerNewName = $form["customerName"];
+    $customerNewAddress = $form["customerAddress"];
+    $customerNewPostal = $form["customerPostal"];
+    $customerNewPhone = $form["customerPhone"];
     $customerModel = new CustomerModel($this->db);
-    $customerModel->editCustomer($customerNumber, $customerNewName);
+    $customerModel->editCustomer($customerNumber, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone);
     $properties = ["customerNumber" => $customerNumber,
                    "customerOldName" => $customerOldName,
-                   "customerNewName" => $customerNewName];
+                   "customerNewName" => $customerNewName,
+                   "customerOldAddress" => $customerOldAddress,
+                   "customerNewAddress" => $customerNewAddress,
+                   "customerOldPostal" => $customerOldPostal,
+                   "customerNewPostal" => $customerNewPostal,
+                   "customerOldPhone" => $customerOldPhone,
+                   "customerNewPhone" => $customerNewPhone];
     return $this->render("CustomerEdited.twig", $properties);
   }    
     

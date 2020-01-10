@@ -3,8 +3,10 @@ CREATE DATABASE Bank;
 USE Bank;
 
 CREATE TABLE Customers (customerNumber INTEGER NOT NULL AUTO_INCREMENT KEY,
-                        customerName VARCHAR(256));
-
+                        customerName VARCHAR(256), customerID VARCHAR(256), 
+                        customerAddress VARCHAR(256), customerPostal VARCHAR(256), 
+                        customerPhone VARCHAR(256));
+ 
 CREATE TABLE Accounts (accountNumber INTEGER NOT NULL AUTO_INCREMENT KEY,
                        customerNumber INTEGER NOT NULL,
                        FOREIGN KEY (customerNumber) REFERENCES Customers(customerNumber));
@@ -14,9 +16,8 @@ CREATE TABLE Events (accountNumber INTEGER NOT NULL,
                      amount REAL, -- FLOAT
                      FOREIGN KEY (accountNumber) REFERENCES Accounts(accountNumber));
 
-INSERT INTO Customers(customerName)
-  VALUES ('Adam Bertilsson'), ('Bertil Ceasarsson'),  ('Ceasar Davidsson'),
-         ('David Eriksson'), ('Erik Filipsson'),  ('Filip Gustavsson');
+INSERT INTO Customers(customerName, customerID, customerAddress, customerPostal, customerPhone)
+  VALUES ('Philip Krook', '8612160575', 'Skolvägen 13a', '184 30 Åkersberga', '0704253487')
 
 INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Adam Bertilsson';
 INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Bertil Ceasarsson';

@@ -7,7 +7,7 @@
     "controller": "Customer",
     "method": "customerAdded"
   },
-  "editCustomer/:customerNumber/:customerName": {
+  "editCustomer/:customerNumber/:customerName/:customerAddress/:customerPostal/:customerPhone": {
     "controller": "Customer",
     "method": "editCustomer",
     "params": {
@@ -15,7 +15,7 @@
       "customerName": "string"
     }
   },
-  "customerEdited/:customerNumber/:customerName": {
+  "customerEdited/:customerNumber/:customerName/:customerAddress/:customerPostal/:customerPhone": {
     "controller": "Customer",
     "method": "customerEdited",
     "params": {

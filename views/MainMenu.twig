@@ -11,22 +11,35 @@
 
   <table border>
     <tr>
-      <td colspan="8"><h1>Bank MVC Twig</h1></td>
+      <td colspan="8"><h1>Car Rental</h1></td>
     </tr>
     
+
+
+
+
+
     <tr><td colspan="3">
     <form action="/addCustomer" method="post">
       <input type="submit" style="width:100%" value="Add Customer">
     </form>  
     </td></tr>
 
+
+
+
+
+
     {% for customer in customers %}
       <tr>
         <td><b>{{customer.customerNumber}}</b></td>
             <td colspan = "2"><b>{{customer.customerName}}</b></td>
-
+            <td colspan = "2"><b>{{customer.customerID}}</b></td>
+            <td colspan = "2"><b>{{customer.customerAddress}}</b></td>
+            <td colspan = "2"><b>{{customer.customerPostal}}</b></td>
+            <td colspan = "2"><b>{{customer.customerPhone}}</b></td>
         <td>
-          <form method="post" action="/editCustomer/{{customer.customerNumber}}/{{customer.customerName}}">
+          <form method="post" action="/editCustomer/{{customer.customerNumber}}/{{customer.customerName}}/{{customer.customerAddress}}/{{customer.customerPostal}}/{{customer.customerPhone}}">
             <input type="submit" style="width:100%" value="Edit">
           </form>
         </td>

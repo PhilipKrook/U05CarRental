@@ -8,21 +8,28 @@ use Bank\Exceptions\NotFoundException;
 use PDO;
 
 class CustomerModel extends AbstractModel {
-  public function addCustomer($customerName) {
-    $customersQuery = "INSERT INTO Customers(customerName) " .
-                      "VALUES(:customerName)";
+  public function addCustomer($customerName, $customerID, $customerAddress, $customerPostal, $customerPhone) {
+    $customersQuery = "INSERT INTO Customers(customerName, customerID, customerAddress, customerPostal, customerPhone) " .
+                      "VALUES(:customerName, :customerID, :customerAddress, :customerPostal, :customerPhone)";
     $customersStatement = $this->db->prepare($customersQuery);
-    $customersStatement->execute(["customerName" => $customerName]);
+    $customersStatement->execute(["customerName" => $customerName, 
+                                  "customerID" => $customerID, 
+                                  "customerAddress" => $customerAddress, 
+                                  "customerPostal" => $customerPostal, 
+                                  "customerPhone" => $customerPhone]);
     if (!$customersStatement) die("Fatal error."); // $this->db->errorInfo());
     $customerNumber = $this->db->lastInsertId();
     return $customerNumber;
   }
 
-  public function editCustomer($customerNumber, $customerNewName) {
-    $customersQuery = "UPDATE Customers SET customerName = :customerName " .
+  public function editCustomer($customerNumber, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone) {
+    $customersQuery = "UPDATE Customers SET customerName = :customerName, customerAddress = :customerAddress, customerPostal = :customerPostal, customerPhone = :customerPhone"  .
                       "WHERE customerNumber = :customerNumber";
     $customersStatement = $this->db->prepare($customersQuery);
     $customersParameters = ["customerName" => $customerNewName,
+                            "customerAddress" => $customerNewAddress,
+                            "customerPostal" => $customerNewPostal,
+                            "customerPhone" => $customerNewPhone,
                             "customerNumber" => $customerNumber];
     $customersResult = $customersStatement->execute($customersParameters);
     if (!$customersResult) die($this->db->errorInfo()[2]);

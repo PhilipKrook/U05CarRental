@@ -1,8 +1,18 @@
 {% block addCustomer %}
   <h1>Add Customer</h1>
 
-  <form method="post" action="/customerAdded">
-    Name: <input type="text" name="customerName" autofocus="autofocus">
-    <input type="submit" value="Ok">
+<table border>
+<tr>
+  <form method="post" action="/customerAdded">  
+    <td>Customer ID: <input type="text" name="customerID" autofocus="autofocus"></td>
+    <td>Name: <input type="text" name="customerName" autofocus="autofocus"></td>
+    <td>Address: <input type="text" name="customerAddress" autofocus="autofocus"></td>
+    <td>Postal Address: <input type="text" name="customerPostal" autofocus="autofocus"></td>
+    <td>Phone: <input type="text" name="customerPhone" autofocus="autofocus"></td>
+    <input type="submit" value="Ok">    
   </form>
+</tr>
+</table>
+
+
 {% endblock %}

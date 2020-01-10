@@ -16,9 +16,18 @@ class BankModel extends AbstractModel {
     foreach ($customerRows as $customerRow) {
       $customerNumber = htmlspecialchars($customerRow["customerNumber"]);
       $customerName = htmlspecialchars($customerRow["customerName"]);
+      $customerID = htmlspecialchars($customerRow["customerID"]);
+      $customerAddress = htmlspecialchars($customerRow["customerAddress"]);
+      $customerPostal = htmlspecialchars($customerRow["customerPostal"]);
+      $customerPhone = htmlspecialchars($customerRow["customerPhone"]);
       $customer = ["customerNumber" => $customerNumber,
-                   "customerName" => $customerName];        
-        
+                   "customerName" => $customerName,
+                   "customerID" => $customerID,
+                   "customerAddress" => $customerAddress,
+                   "customerPostal" => $customerPostal,
+                   "customerPhone" => $customerPhone];        
+       
+                   
       $accountsQuery = "SELECT * FROM Accounts WHERE customerNumber = :customerNumber";
       $accountsStatement = $this->db->prepare($accountsQuery);
       $accountsResult = $accountsStatement->execute(["customerNumber" => $customerNumber]);
@@ -49,7 +58,7 @@ class BankModel extends AbstractModel {
       $customer["accounts"] = $accounts;
       $customers[] = $customer;
     }
-
+    var_dump ($customers);
     return $customers;
   }
 }
