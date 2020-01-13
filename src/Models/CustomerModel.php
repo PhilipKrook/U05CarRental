@@ -23,14 +23,19 @@ class CustomerModel extends AbstractModel {
   }
 
   public function editCustomer($customerNumber, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone) {
-    $customersQuery = "UPDATE Customers SET customerName = :customerName, customerAddress = :customerAddress, customerPostal = :customerPostal, customerPhone = :customerPhone"  .
-                      "WHERE customerNumber = :customerNumber";
+    $customersQuery = "UPDATE Customers SET customerName = :customerName,
+                                            customerAddress = :customerAddress, 
+                                            customerPostal = :customerPostal, 
+                                            customerPhone = :customerPhone,
+                                            customerNumber = :customerNumber 
+                                            WHERE customerNumber = :customerNumber";
     $customersStatement = $this->db->prepare($customersQuery);
     $customersParameters = ["customerName" => $customerNewName,
                             "customerAddress" => $customerNewAddress,
                             "customerPostal" => $customerNewPostal,
                             "customerPhone" => $customerNewPhone,
                             "customerNumber" => $customerNumber];
+                            
     $customersResult = $customersStatement->execute($customersParameters);
     if (!$customersResult) die($this->db->errorInfo()[2]);
   }

@@ -4,14 +4,14 @@
 <table border>
 <tr>
   <form method="post" action="/customerEdited/{{customerNumber}}/{{customerName}}/{{customerAddress}}/{{customerPostal}}/{{cutomerPhone}}">
-    Name: <input type="text" name="customerName" value="{{customerName}}" autofocus="autofocus">
-    Address: <input type="text" name="customerAddress" value="{{customerAddress}}" autofocus="autofocus">
-    Postal Address: <input type="text" name="customerPostal" value="{{customerPostal}}" autofocus="autofocus">
-    Phone: <input type="text" name="customerPhone" value="{{customerPhone}}" autofocus="autofocus">
+    <td>Name: <input type="text" name="customerName" value="{{customerName}}" autofocus="autofocus"></td>
+    <td>Address: <input type="text" name="customerAddress" value="{{customerAddress}}" autofocus="autofocus"></td>
+    <td>Postal Address: <input type="text" name="customerPostal" value="{{customerPostal}}" autofocus="autofocus"></td>
+    <td>Phone: <input type="text" name="customerPhone" value="{{customerPhone}}" autofocus="autofocus"></td>
+    </tr>
     <p>
     <input type="submit" value="Ok">
   </form>
-</tr>
 </table>
 
 {% endblock %}

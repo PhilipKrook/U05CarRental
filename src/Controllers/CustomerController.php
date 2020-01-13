@@ -45,6 +45,7 @@ class CustomerController extends AbstractController {
     $customerNewAddress = $form["customerAddress"];
     $customerNewPostal = $form["customerPostal"];
     $customerNewPhone = $form["customerPhone"];
+    echo $customerOldName;
     $customerModel = new CustomerModel($this->db);
     $customerModel->editCustomer($customerNumber, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone);
     $properties = ["customerNumber" => $customerNumber,
