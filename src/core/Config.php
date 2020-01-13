@@ -1,7 +1,7 @@
 <?php
 
-namespace Bank\Core;
-use Bank\Exceptions\NotFoundException;
+namespace RentalCar\Core;
+use RentalCar\Exceptions\NotFoundException;
 
 class Config {
     private $map;

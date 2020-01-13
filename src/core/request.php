@@ -1,6 +1,6 @@
 <?php
 
-namespace Bank\Core;
+namespace RentalCar\Core;
 
 class Request {
     private $path;

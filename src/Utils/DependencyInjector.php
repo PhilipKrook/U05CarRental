@@ -1,7 +1,7 @@
 <?php
 
-namespace Bank\Utils;
-use Bank\Exceptions\NotFoundException;
+namespace RentalCar\Utils;
+use RentalCar\Exceptions\NotFoundException;
 
 class DependencyInjector {
     private $dependencies = [];

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bank\Models;
+namespace RentalCar\Models;
 
 use PDO;
 

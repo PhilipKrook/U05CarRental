@@ -1,10 +1,10 @@
 <?php
 
-namespace Bank\Core;
+namespace RentalCar\Core;
 
-use Bank\Controllers\ErrorController;
-use Bank\Controllers\CustomerController;
-use Bank\Utils\DependencyInjector;
+use RentalCar\Controllers\ErrorController;
+use RentalCar\Controllers\CustomerController;
+use RentalCar\Utils\DependencyInjector;
 
 class Router {
   private $di;
@@ -31,7 +31,7 @@ class Router {
       // $map = ["customerNumber" => 7, "customerName" => "Erik%20Dumas" "x" => "y"]
       
       if ($this->match($route, $path, $params, $map)) {
-        $controllerName = '\Bank\Controllers\\' .
+        $controllerName = '\CarRental\Controllers\\' .
                           $info["controller"] . "Controller";
         $controller = new $controllerName($this->di, $request);
         $methodName = $info["method"];

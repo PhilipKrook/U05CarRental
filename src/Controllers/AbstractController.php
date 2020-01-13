@@ -1,8 +1,8 @@
 <?php
-namespace Bank\Controllers;
+namespace RentalCar\Controllers;
 
-use Bank\Core\Request;
-use Bank\Utils\DependencyInjector;
+use RentalCar\Core\Request;
+use RentalCar\Utils\DependencyInjector;
 
 abstract class AbstractController {
     protected $request;

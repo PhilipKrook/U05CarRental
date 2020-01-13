@@ -1,0 +1,14 @@
+{% block carRemoved %}
+  <h1>car Removed</h1>
+
+  {% if (carRented == 0) %}
+    <p>car {{carMake}} with number {{carID}} has been removed.</p>
+  {% else %}
+    <p><i>car {{carMake}} with number {{carID}}
+       cannot be removed since it's in use {{carRented}} </i></p>
+  {% endif %}
+  
+  <form method="post" action="/">
+    <input type="submit" value="Ok">
+  </form>
+{% endblock %}

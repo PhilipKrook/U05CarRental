@@ -1,8 +1,8 @@
 <?php
-use Bank\Core\Config;
-use Bank\Core\Router;
-use Bank\Core\Request;
-use Bank\Utils\DependencyInjector;
+use RentalCar\Core\Config;
+use RentalCar\Core\Router;
+use RentalCar\Core\Request;
+use RentalCar\Utils\DependencyInjector;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 

@@ -1,0 +1,19 @@
+{% block addCar %}
+  <h1>Add Car</h1>
+
+<table border>
+<tr>
+  <form method="post" action="/carAdded">  
+    <td>Car ID: <input type="text" name="carID" autofocus="autofocus"></td>
+    <td>Make: <input type="text" name="carMake" autofocus="autofocus"></td>
+    <td>Colour: <input type="text" name="carColour" autofocus="autofocus"></td>
+    <td>Year: <input type="text" name="carYear" autofocus="autofocus"></td>
+    <td>Price: <input type="text" name="carPrice" autofocus="autofocus"></td>
+    </tr>
+    <p>
+    <input type="submit" value="Ok">    
+  </form>
+</table>
+
+
+{% endblock %}

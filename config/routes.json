@@ -31,9 +31,9 @@
       "customerName": "string"
     }
   },
-  "addAccount/:customerNumber/:customerName": {
+  "addCar/:carMake/:carColour/:carID/:carYear/:carPrice": {
     "controller": "Customer",
-    "method": "addAccount",
+    "method": "addCar",
     "params": {
       "customerNumber": "number",
       "customerName": "string"
@@ -102,9 +102,9 @@
       "accountNumber": "number"
     }
   },
-  "removeAccount/:customerNumber/:customerName/:accountNumber": {
-    "controller": "Account",
-    "method": "removeAccount",
+  "removeCar/:carMake/:carColour/:carID/:carYear/:carPrice": {
+    "controller": "Car",
+    "method": "removeCar",
     "params": {
       "customerNumber": "number",
       "customerName": "string",

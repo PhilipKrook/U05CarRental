@@ -1,10 +1,10 @@
 <?php
 
-namespace Bank\Models;
+namespace RentalCar\Models;
 
 //use Bank\Domain\Bank;
-use Bank\Exceptions\DbException;
-use Bank\Exceptions\NotFoundException;
+use RentalCar\Exceptions\DbException;
+use RentalCar\Exceptions\NotFoundException;
 use PDO;
 
 class MainMenuModel extends AbstractModel {

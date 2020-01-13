@@ -1,0 +1,17 @@
+{% block editCar %}
+<h1>Edit Car</h1>
+
+<table border>
+<tr>
+  <form method="post" action="/carEdited/{{carID}}/{{carMake}}/{{carColour}}/{{carYear}}/{{carPhone}}">
+    <td>Make: <input type="text" name="carMake" value="{{carMake}}" autofocus="autofocus"></td>
+    <td>Colour: <input type="text" name="carColour" value="{{carColour}}" autofocus="autofocus"></td>
+    <td>Year: <input type="text" name="carYear" value="{{carYear}}" autofocus="autofocus"></td>
+    <td>Price: <input type="text" name="carPrice" value="{{carPrice}}" autofocus="autofocus"></td>
+    </tr>
+    <p>
+    <input type="submit" value="Ok">
+  </form>
+</table>
+
+{% endblock %}

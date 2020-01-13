@@ -1,9 +1,9 @@
 <?php
 
-namespace Bank\Controllers;
+namespace RentalCar\Controllers;
 
-use Bank\Exceptions\NotFoundException;
-use Bank\Models\CustomerModel;
+use RentalCar\Exceptions\NotFoundException;
+use RentalCar\Models\CustomerModel;
 
 class CustomerController extends AbstractController {
   public function addCustomer() {

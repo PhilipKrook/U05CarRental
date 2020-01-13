@@ -1,54 +1,26 @@
-DROP DATABASE IF EXISTS Bank;
-CREATE DATABASE Bank;
-USE Bank;
+DROP DATABASE IF EXISTS RentalCar;
+CREATE DATABASE RentalCar;
+USE RentalCar;
 
 CREATE TABLE Customers (customerNumber INTEGER NOT NULL AUTO_INCREMENT KEY,
                         customerName VARCHAR(256), customerID VARCHAR(256), 
                         customerAddress VARCHAR(256), customerPostal VARCHAR(256), 
                         customerPhone VARCHAR(256));
  
-CREATE TABLE Accounts (accountNumber INTEGER NOT NULL AUTO_INCREMENT KEY,
-                       customerNumber INTEGER NOT NULL,
-                       FOREIGN KEY (customerNumber) REFERENCES Customers(customerNumber));
+CREATE TABLE Cars      (carMake VARCHAR(256), carName VARCHAR(256), carID VARCHAR(256), 
+                        carColour VARCHAR(256), carYear VARCHAR(256), 
+                        carPrice VARCHAR(256));
 
-CREATE TABLE Events (accountNumber INTEGER NOT NULL,
+CREATE TABLE Events (carNumber INTEGER NOT NULL,
                      time TIMESTAMP,
                      amount REAL, -- FLOAT
-                     FOREIGN KEY (accountNumber) REFERENCES Accounts(accountNumber));
+                     FOREIGN KEY (carID) REFERENCES Cars(carID));
 
 INSERT INTO Customers(customerName, customerID, customerAddress, customerPostal, customerPhone)
   VALUES ('Philip Krook', '8612160575', 'Skolvägen 13a', '184 30 Åkersberga', '0704253487')
 
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Adam Bertilsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Bertil Ceasarsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Adam Bertilsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Bertil Ceasarsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Adam Bertilsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Bertil Ceasarsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Ceasar Davidsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'David Eriksson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Ceasar Davidsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'David Eriksson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Erik Filipsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Filip Gustavsson';
 
-INSERT INTO Events(accountNumber, amount) SELECT accountNumber, 100 FROM Accounts;
-INSERT INTO Events(accountNumber, amount) SELECT accountNumber, -200 FROM Accounts WHERE accountNumber = 1;
-INSERT INTO Events(accountNumber, amount) SELECT accountNumber, 200 FROM Accounts WHERE accountNumber = 2;
-INSERT INTO Events(accountNumber, amount) SELECT accountNumber, -300 FROM Accounts WHERE accountNumber = 3;
-
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Bertil Ceasarsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Adam Bertilsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Bertil Ceasarsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Adam Bertilsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Bertil Ceasarsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Ceasar Davidsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'David Eriksson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Ceasar Davidsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'David Eriksson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Erik Filipsson';
-INSERT INTO Accounts(customerNumber) SELECT customerNumber FROM Customers WHERE customerName = 'Filip Gustavsson';
-
+/*
 select * from Customers;
-select * from Accounts;
+select * from Cars;
 select * from Events;
