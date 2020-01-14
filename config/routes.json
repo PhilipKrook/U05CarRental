@@ -1,114 +1,92 @@
 {
-  "addCustomer": {
+  "CustomerAdd": {
     "controller": "Customer",
-    "method": "addCustomer"
+    "method": "CustomerAdd"
   },
-  "customerAdded": {
+  "CustomerAdded": {
     "controller": "Customer",
-    "method": "customerAdded"
+    "method": "CustomerAdded"
   },
-  "editCustomer/:customerNumber/:customerName/:customerAddress/:customerPostal/:customerPhone": {
+  "CustomerEdit/:customerNumber/:customerName/:customerAddress/:customerPostal/:customerPhone": {
     "controller": "Customer",
-    "method": "editCustomer",
-    "params": {
-      "customerNumber": "number",
-      "customerName": "string"
-    }
-  },
-  "customerEdited/:customerNumber/:customerName/:customerAddress/:customerPostal/:customerPhone": {
-    "controller": "Customer",
-    "method": "customerEdited",
-    "params": {
-      "customerNumber": "number",
-      "customerName": "string"
-    }
-  },
-  "removeCustomer/:customerNumber/:customerName": {
-    "controller": "Customer",
-    "method": "removeCustomer",
-    "params": {
-      "customerNumber": "number",
-      "customerName": "string"
-    }
-  },
-  "addCar/:carMake/:carColour/:carID/:carYear/:carPrice": {
-    "controller": "Customer",
-    "method": "addCar",
-    "params": {
-      "customerNumber": "number",
-      "customerName": "string"
-    }
-  },
-  "deposit/:customerNumber/:customerName/:accountNumber": {
-    "controller": "Account",
-    "method": "deposit",
+    "method": "CustomerEdit",
     "params": {
       "customerNumber": "number",
       "customerName": "string",
-      "accountNumber": "number"
+      "customerAddress": "string",
+      "customerPostal": "string",
+      "customerPhone": "number"
     }
   },
-  "depositDone/:customerNumber/:customerName/:accountNumber": {
-    "controller": "Account",
-    "method": "depositDone",
+  "CustomerEdited/:customerNumber/:customerName/:customerAddress/:customerPostal/:customerPhone": {
+    "controller": "Customer",
+    "method": "CustomerEdited",
     "params": {
       "customerNumber": "number",
       "customerName": "string",
-      "accountNumber": "number"
+      "customerAddress": "string",
+      "customerPostal": "string",
+      "customerPhone": "number"
     }
   },
-  "withdraw/:customerNumber/:customerName/:accountNumber": {
-    "controller": "Account",
-    "method": "withdraw",
+  "CustomerRemove/:customerNumber/:customerName": {
+    "controller": "Customer",
+    "method": "CustomerRemove",
     "params": {
       "customerNumber": "number",
       "customerName": "string",
-      "accountNumber": "number"
+      "customerAddress": "string",
+      "customerPostal": "string",
+      "customerPhone": "number"
     }
   },
-  "withdrawDone/:customerNumber/:customerName/:accountNumber": {
-    "controller": "Account",
-    "method": "withdrawDone",
-    "params": {
-      "customerNumber": "number",
-      "customerName": "string",
-      "accountNumber": "number"
-    }
-  },
-  "transfer/:customerNumber/:customerName/:accountNumber": {
-    "controller": "Account",
-    "method": "transfer",
-    "params": {
-      "fromCustomerNumber": "number",
-      "fromCustomerName": "string",
-      "fromAccountNumber": "number"
-    }
-  },
-  "transferDone/:fromCustomerNumber/:fromCustomerName/:fromAccountNumber": {
-    "controller": "Account",
-    "method": "transferDone",
-    "params": {
-      "fromCustomerNumber": "number",
-      "fromCustomerName": "string",
-      "fromAccountNumber": "number"
-    }
-  },
-  "viewAccount/:customerNumber/:customerName/:accountNumber": {
-    "controller": "Account",
-    "method": "viewAccount",
-    "params": {
-      "customerNumber": "number",
-      "customerName": "string",
-      "accountNumber": "number"
-    }
-  },
-  "removeCar/:carMake/:carColour/:carID/:carYear/:carPrice": {
+  "CarAdd/:carMake/:carColour/:carID/:carYear/:carPrice": {
     "controller": "Car",
-    "method": "removeCar",
+    "method": "CarAdd",
     "params": {
-      "customerNumber": "number",
-      "customerName": "string",
-      "accountNumber": "number"
+      "carID": "string",
+      "carMake": "string",
+      "carColour": "string",
+      "carYear": "number",
+      "carPrice": "number"
+    }
+  },  
+  "CarAdded": {
+    "controller": "Car",
+    "method": "CarAdded"
+  },
+  
+  "CarEdit/:carID/:carMake/:carColour/:carYear/:carPrice": {
+    "controller": "Car",
+    "method": "CarEdit",
+    "params": {
+      "carID": "string",
+      "carMake": "string",
+      "carColour": "string",
+      "carYear": "number",
+      "carPrice": "number"
+    }
+  },
+  "CarEdited/:carID/:carMake/:carColour/:carYear/:carPrice": {
+    "controller": "Car",
+    "method": "CarEdited",
+    "params": {
+      "carID": "string",
+      "carMake": "string",
+      "carColour": "string",
+      "carYear": "number",
+      "carPrice": "number"
+    }
+  },
+  "CarRemove/:carMake/:carColour/:carID/:carYear/:carPrice": {
+    "controller": "Car",
+    "method": "CarRemove",
+    "params": {
+      "carID": "string",
+      "carMake": "string",
+      "carColour": "string",
+      "carYear": "number",
+      "carPrice": "number"
     }
   },
   "": {

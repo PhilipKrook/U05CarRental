@@ -7,6 +7,11 @@ use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/src/Core/Config.php';
+require_once __DIR__ . '/src/Utils/DependencyInjector.php';
+require_once __DIR__ . '/src/Core/Router.php';
+require_once __DIR__ . '/src/Core/Request.php';
+
 
 $config = new Config();
 $dbConfig = $config->get('database');

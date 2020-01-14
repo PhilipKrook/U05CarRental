@@ -8,7 +8,7 @@ use RentalCar\Exceptions\NotFoundException;
 use PDO;
 
 class CustomerModel extends AbstractModel {
-  public function addCustomer($customerName, $customerID, $customerAddress, $customerPostal, $customerPhone) {
+  public function customerAdd($customerName, $customerID, $customerAddress, $customerPostal, $customerPhone) {
     $customersQuery = "INSERT INTO Customers(customerName, customerID, customerAddress, customerPostal, customerPhone) " .
                       "VALUES(:customerName, :customerID, :customerAddress, :customerPostal, :customerPhone)";
     $customersStatement = $this->db->prepare($customersQuery);
@@ -22,7 +22,7 @@ class CustomerModel extends AbstractModel {
     return $customerNumber;
   }
 
-  public function editCustomer($customerNumber, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone) {
+  public function customerEdit($customerNumber, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone) {
     $customersQuery = "UPDATE Customers SET customerName = :customerName,
                                             customerAddress = :customerAddress, 
                                             customerPostal = :customerPostal, 
@@ -40,30 +40,30 @@ class CustomerModel extends AbstractModel {
     if (!$customersResult) die($this->db->errorInfo()[2]);
   }
 
-  public function removeCustomer($customerNumber) {
-    $accountsQuery = "SELECT COUNT(*) FROM Accounts WHERE customerNumber = :customerNumber";
-    $accountsStatement = $this->db->prepare($accountsQuery);
-    $accountsResult = $accountsStatement->execute(["customerNumber" => $customerNumber]);
-    if (!$accountsResult) die($this->db->errorInfo()[2]);
-    $accountsRows = $accountsStatement->fetchAll();
-    $numberOfAccounts = htmlspecialchars($accountsRows[0]["COUNT(*)"]);
+  public function customerRemove($customerNumber) {
+    $carsQuery = "SELECT COUNT(*) FROM Cars WHERE customerNumber = :customerNumber";
+    $carsStatement = $this->db->prepare($carsQuery);
+    $carsResult = $carsStatement->execute(["customerNumber" => $customerNumber]);
+    if (!$carsResult) die($this->db->errorInfo()[2]);
+    $carsRows = $carsStatement->fetchAll();
+    $numberOfCars = htmlspecialchars($carsRows[0]["COUNT(*)"]);
     
-    if ($numberOfAccounts == 0) {
+    if ($numberOfCars == 0) {
       $customersQuery = "DELETE FROM Customers WHERE customerNumber = :customerNumber";
       $customersStatement = $this->db->prepare($customersQuery);
       $customersResult = $customersStatement->execute(["customerNumber" => $customerNumber]);
       if (!$customersResult) die($this->db->errorInfo()[2]);
     }
 
-    return $numberOfAccounts;
+    return $numberOfCars;
   }  
 
-  public function addAccount($customerNumber) {
-    $accountsQuery = "INSERT INTO Accounts(customerNumber) VALUES(:customerNumber)";
-    $accountsStatement = $this->db->prepare($accountsQuery);
-    $accountsStatement->execute(["customerNumber" => $customerNumber]);
-    if (!$accountsStatement) die($this->db->errorInfo()[2]);
-    $accountNumber = $this->db->lastInsertId();
-    return $accountNumber;
-  }  
+ /* public function carAdd($customerNumber) {
+    $carsQuery = "INSERT INTO Cars(customerNumber) VALUES(:customerNumber)";
+    $carsStatement = $this->db->prepare($carsQuery);
+    $carsStatement->execute(["customerNumber" => $customerNumber]);
+    if (!$carsStatement) die($this->db->errorInfo()[2]);
+    $carID = $this->db->lastInsertId();
+    return $carID;
+  }  */
 }

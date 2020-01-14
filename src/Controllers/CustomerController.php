@@ -6,7 +6,7 @@ use RentalCar\Exceptions\NotFoundException;
 use RentalCar\Models\CustomerModel;
 
 class CustomerController extends AbstractController {
-  public function addCustomer() {
+  public function customerAdd() {
     return $this->render("AddCustomer.twig", []);
   }
     
@@ -18,7 +18,7 @@ class CustomerController extends AbstractController {
     $customerPostal = $form["customerPostal"];
     $customerPhone = $form["customerPhone"];
     $customerModel = new CustomerModel($this->db);
-    $customerNumber = $customerModel->addCustomer($customerName, $customerID, $customerAddress, $customerPostal, $customerPhone);
+    $customerNumber = $customerModel->customerAdd($customerName, $customerID, $customerAddress, $customerPostal, $customerPhone);
     $properties = ["customerNumber" => $customerNumber,
                    "customerName" => $customerName,
                    "customerID" => $customerID,
@@ -28,7 +28,7 @@ class CustomerController extends AbstractController {
     return $this->render("CustomerAdded.twig", $properties);
   }    
 
-  public function editCustomer($customerNumber, $customerName, $customerAddress, $customerPostal, $customerPhone) {
+  public function customerEdit($customerNumber, $customerName, $customerAddress, $customerPostal, $customerPhone) {
     //$customerName = $map["customerName"];
     //$customerNumber = $map["customerNumber"];      
     $properties = ["customerNumber" => $customerNumber,
@@ -47,7 +47,7 @@ class CustomerController extends AbstractController {
     $customerNewPhone = $form["customerPhone"];
     echo $customerOldName;
     $customerModel = new CustomerModel($this->db);
-    $customerModel->editCustomer($customerNumber, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone);
+    $customerModel->customerEdit($customerNumber, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone);
     $properties = ["customerNumber" => $customerNumber,
                    "customerOldName" => $customerOldName,
                    "customerNewName" => $customerNewName,
@@ -60,18 +60,18 @@ class CustomerController extends AbstractController {
     return $this->render("CustomerEdited.twig", $properties);
   }    
     
-  public function removeCustomer($customerNumber, $customerName) {
+  public function customerRemove($customerNumber, $customerName) {
     $customerModel = new CustomerModel($this->db);
-    $numberOfAccounts = $customerModel->removeCustomer($customerNumber);
+    $numberOfAccounts = $customerModel->customerRemove($customerNumber);
     $properties = ["customerNumber" => $customerNumber,
                    "customerName" => $customerName,
                    "numberOfAccounts" => $numberOfAccounts];
     return $this->render("CustomerRemoved.twig", $properties);
   }
 
-  public function addAccount($customerNumber, $customerName) {
+  public function carAdd($customerNumber, $customerName) {
     $customerModel = new CustomerModel($this->db);
-    $accountNumber = $customerModel->addAccount($customerNumber);
+    $accountNumber = $customerModel->carAdd($customerNumber);
     $properties = ["customerNumber" => $customerNumber,
                    "customerName" => $customerName,
                    "accountNumber" => $accountNumber];

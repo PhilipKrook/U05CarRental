@@ -13,22 +13,12 @@
     <tr>
       <td colspan="8"><h1>Car Rental</h1></td>
     </tr>
-    
-
-
-
-
 
     <tr><td colspan="3">
     <form action="/addCustomer" method="post">
       <input type="submit" style="width:100%" value="Add Customer">
     </form>  
     </td></tr>
-
-
-
-
-
 
     {% for customer in customers %}
       <tr>
@@ -58,15 +48,15 @@
         </td>
       </tr>
 
-      {% for account in customer.accounts %}
+
+
+      {% for cars in customer.cars %}
         <tr>
           <td></td>
-          <td>{{account["accountNumber"]}}</td>
-          <td>{{account["accountBalance"]}}</td>
-
-          <!--<td>{{account.accountNumber}}</td>
-          <td>{{account.accountBalance}}</td>-->
-
+          <td>{{car["carID"]}}</td>
+          <td>{{car["carID"]}}</td>
+        
+        <!--
           <td class="column">
             <form method="post" action="/deposit/{{customer.customerNumber}}/{{customer.customerName}}/{{account.accountNumber}}">
               <input type="submit" style="width:100%" value="Deposit">
@@ -90,10 +80,10 @@
               <input type="submit" style="width:100%" value="View">
             </form>
           </td>
-
+        -->
           <td class="column">
-            <form method="post" action="/removeAccount/{{customer.customerNumber}}/{{customer.customerName}}/{{account.accountNumber}}"
-                onsubmit="return confirm('Are you sure you want to remove account {{account.accountNumber}}?')">
+            <form method="post" action="/carAccount/{{customer.customerNumber}}/{{customer.customerName}}/{{car.carID}}"
+                onsubmit="return confirm('Are you sure you want to remove account {{car.carID}}?')">
               <input type="submit" style="width:100%" value="Remove">
             </form>
           </td>

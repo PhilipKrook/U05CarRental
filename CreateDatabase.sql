@@ -7,11 +7,10 @@ CREATE TABLE Customers (customerNumber INTEGER NOT NULL AUTO_INCREMENT KEY,
                         customerAddress VARCHAR(256), customerPostal VARCHAR(256), 
                         customerPhone VARCHAR(256));
  
-CREATE TABLE Cars      (carMake VARCHAR(256), carName VARCHAR(256), carID VARCHAR(256), 
-                        carColour VARCHAR(256), carYear VARCHAR(256), 
-                        carPrice VARCHAR(256));
+CREATE TABLE Cars      (carMake VARCHAR(256), carID VARCHAR(256), carColour VARCHAR(256), 
+                        carYear VARCHAR(256), carPrice VARCHAR(256));
 
-CREATE TABLE Events (carNumber INTEGER NOT NULL,
+CREATE TABLE Events (carID INTEGER NOT NULL,
                      time TIMESTAMP,
                      amount REAL, -- FLOAT
                      FOREIGN KEY (carID) REFERENCES Cars(carID));
@@ -19,8 +18,10 @@ CREATE TABLE Events (carNumber INTEGER NOT NULL,
 INSERT INTO Customers(customerName, customerID, customerAddress, customerPostal, customerPhone)
   VALUES ('Philip Krook', '8612160575', 'Skolvägen 13a', '184 30 Åkersberga', '0704253487')
 
+INSERT INTO Cars(carMake, carID, carColour, carYear, carPrice)
+  VALUES ('Toyota', 'XYX123', 'Black', '2012', '100')
 
 /*
-select * from Customers;
-select * from Cars;
-select * from Events;
+SELECT * FROM Customers;
+SELECT * FROM Cars;
+SELECT * FROM Events;

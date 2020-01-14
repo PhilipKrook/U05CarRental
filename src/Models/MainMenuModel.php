@@ -2,7 +2,6 @@
 
 namespace RentalCar\Models;
 
-//use Bank\Domain\Bank;
 use RentalCar\Exceptions\DbException;
 use RentalCar\Exceptions\NotFoundException;
 use PDO;
@@ -27,16 +26,16 @@ class MainMenuModel extends AbstractModel {
                    "customerPostal" => $customerPostal,
                    "customerPhone" => $customerPhone];        
         
-      $accountsQuery = "SELECT * FROM Accounts WHERE customerNumber = :customerNumber";
-      $accountsStatement = $this->db->prepare($accountsQuery);
-      $accountsResult = $accountsStatement->execute(["customerNumber" => $customerNumber]);
-      if (!$accountsResult) die($this->db->errorInfo());
-      $accountsRows = $accountsStatement->fetchAll();
+      $carsQuery = "SELECT * FROM Cars WHERE customerNumber = :customerNumber";
+      $carsStatement = $this->db->prepare($carsQuery);
+      $carsResult = $carsStatement->execute(["customerNumber" => $customerNumber]);
+      if (!$carsResult) die($this->db->errorInfo());
+      $carsRows = $carsStatement->fetchAll();
 
-      $accounts = [];
-      foreach ($accountsRows as $accountRow) {
-        $accountNumber = htmlspecialchars($accountRow["accountNumber"]);
-        $account = ["accountNumber" => $accountNumber];
+      /* $cars = [];
+      foreach ($carsRows as $carRow) {
+        $carID = htmlspecialchars($carRow["carID"]);
+        $car = ["carID" => $carID];
         
         $balanceQuery = "SELECT SUM(amount) FROM Events WHERE accountNumber = :accountNumber";
         $balanceStatement = $this->db->prepare($balanceQuery);
@@ -52,7 +51,7 @@ class MainMenuModel extends AbstractModel {
 
         $account["accountBalance"] = $accountBalance;
         $accounts[] = $account;
-      }
+      }*/
 
       $customer["accounts"] = $accounts;
       $customers[] = $customer;

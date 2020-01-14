@@ -6,6 +6,9 @@ use RentalCar\Controllers\ErrorController;
 use RentalCar\Controllers\CustomerController;
 use RentalCar\Utils\DependencyInjector;
 
+require_once __DIR__ . '/../Controllers/MainMenuController.php';
+
+
 class Router {
   private $di;
   private $routeMap;

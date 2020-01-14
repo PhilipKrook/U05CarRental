@@ -1,6 +1,6 @@
 <?php
 
-Makespace RentalCar\Controllers;
+namespace RentalCar\Controllers;
 
 use RentalCar\Exceptions\NotFoundException;
 use RentalCar\Models\CarModel;
@@ -14,11 +14,11 @@ class CarController extends AbstractController {
     $form = $this->request->getForm();
     $carMake = $form["carMake"];
     $carID = $form["carID"];
-    $carColour = $form["carcolour"];
+    $carColour = $form["carColour"];
     $carYear = $form["carYear"];
     $carPrice = $form["carPrice"];
     $carModel = new CarModel($this->db);
-    $carID = $carMake->addcar($carMake, $carID, $carColour, $carYear, $carPrice);
+    $carID = $carMake->addCar($carMake, $carID, $carColour, $carYear, $carPrice);
     $properties = ["carID" => $carID,
                    "carMake" => $carMake,                   
                    "carColour" => $carColour,
@@ -27,9 +27,7 @@ class CarController extends AbstractController {
     return $this->render("carAdded.twig", $properties);
   }    
 
-  public function editcar($carMake, $carColour, $carYear, $carPrice) {
-    //$carMake = $map["carMake"];
-    //$carID = $map["carID"];      
+  public function editCar($carMake, $carColour, $carYear, $carPrice) {
     $properties = ["carMake" => $carMake,
                    "carColour" => $carColour,
                    "carYear" => $carYear,
@@ -45,7 +43,7 @@ class CarController extends AbstractController {
     $carNewPrice = $form["carPrice"];
     echo $carOldMake;
     $carMake = new carModel($this->db);
-    $carMake->editcar($carID, $carNewMake, $carNewColour, $carNewYear, $carNewPrice);
+    $carMake->editCar($carID, $carNewMake, $carNewColour, $carNewYear, $carNewPrice);
     $properties = ["carID" => $carID,
                    "carOldMake" => $carOldMake,
                    "carNewMake" => $carNewMake,
@@ -58,12 +56,12 @@ class CarController extends AbstractController {
     return $this->render("carEdited.twig", $properties);
   }    
     
-  public function removecar($carID, $carMake) {
+  public function removeCar($carID, $carMake) {
     $carMake = new carModel($this->db);
-    $IDOfAccounts = $carMake->removecar($carID);
+    $IDOfCars = $carMake->removeCar($carID);
     $properties = ["carID" => $carID,
                    "carMake" => $carMake,
-                   "IDOfAccounts" => $IDOfAccounts];
+                   "IDOfCars" => $IDOfCars];
     return $this->render("carRemoved.twig", $properties);
   }
 
