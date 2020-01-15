@@ -28,9 +28,7 @@ class CustomerController extends AbstractController {
     return $this->render("CustomerAdded.twig", $properties);
   }    
 
-  public function customerEdit($customerNumber, $customerName, $customerAddress, $customerPostal, $customerPhone) {
-    //$customerName = $map["customerName"];
-    //$customerNumber = $map["customerNumber"];      
+  public function customerEdit($customerNumber, $customerName, $customerAddress, $customerPostal, $customerPhone) {      
     $properties = ["customerNumber" => $customerNumber,
                    "customerName" => $customerName,
                    "customerAddress" => $customerAddress,

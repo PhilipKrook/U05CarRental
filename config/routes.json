@@ -1,4 +1,20 @@
 {
+  "viewCustomers": {
+    "controller": "ViewCustomers",
+    "method": "customerList"
+  },
+  "viewCars": {
+    "controller": "ViewCars",
+    "method": "carList"
+  },
+  "checkIn": {
+    "controller": "CheckIn",
+    "method": "checkIn"
+  },
+  "checkOut": {
+    "controller": "CheckOut",
+    "method": "checkOut"
+  },
   "CustomerAdd": {
     "controller": "Customer",
     "method": "CustomerAdd"
@@ -40,6 +56,10 @@
       "customerPhone": "number"
     }
   },
+  "Cars": {
+    "controller": "Car",
+    "method": "carsList"
+  },
   "CarAdd/:carMake/:carColour/:carID/:carYear/:carPrice": {
     "controller": "Car",
     "method": "CarAdd",
@@ -54,8 +74,7 @@
   "CarAdded": {
     "controller": "Car",
     "method": "CarAdded"
-  },
-  
+  },  
   "CarEdit/:carID/:carMake/:carColour/:carYear/:carPrice": {
     "controller": "Car",
     "method": "CarEdit",

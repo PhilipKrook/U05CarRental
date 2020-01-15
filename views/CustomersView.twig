@@ -1,0 +1,45 @@
+{% block viewCustomer %}
+  <h1>View Customer</h1>
+<TABLE BORDER="2"    WIDTH="50%"   CELLPADDING="4" CELLSPACING="3">
+   <TR>
+      </TH>
+   </TR>
+   <TR>
+      <TH>Customer Number</TH>
+      <TH>Customer ID</TH>
+      <TH>Name</TH>
+      <TH>Address</TH>
+      <TH>Postal Address</TH>
+      <TH>Phone Number</TH>      
+      <TH>Edit Customer</TH>
+      <TH>Remove Customer</TH>
+   </TR>
+   {% for customer in customers %}
+   <TR ALIGN="CENTER">
+      <TD>{{customer.customerNumber}}</TD>
+      <TD>{{customer.customerID}}</TD>
+      <TD>{{customer.customerName}}</TD>
+      <TD>{{customer.customerAddress}}</TD>
+      <TD>{{customer.customerPostal}}</TD>
+      <TD>{{customer.customerPhone}}</TD>      
+      <TD><form method="post" action="/editCar/{{car.carID}}/{{car.carMake}}/{{car.carColour}}/{{car.carYear}}/{{car.carPrice}}">
+            <input type="submit" style="width:100%" value="Edit">
+          </form>
+        </TD>
+        <TD>
+          <form method="post" action="/removeCustomer/{{customer.customerNumber}}/{{customer.customerName}}"
+                onsubmit="return confirm(‘Are you sure you want to remove customer {{customer.customerName}}?’)">
+            <input type="submit" style="width:100%" value="Remove">
+          </form>
+        </TD>
+   </TR>
+   {% endfor %}
+</TABLE>
+  </br>
+  <form method="post" action="/addCar/{{car.carID}}/{{car.carMake}}/{{car.carColour}}/{{car.carYear}}/{{car.carPrice}}">
+    <input type="submit" style="width:50%" value="Add Car">
+  </form>
+  <form method="post" action="/">
+    <input type="submit" style="width:50%" value="Main Menu">
+  </form>
+{% endblock %}

@@ -12,10 +12,10 @@ class CarModel extends AbstractModel {
                       "VALUES(:carMake, :carID, :carColour, :carYear, :carPrice)";
     $carsStatement = $this->db->prepare($carsQuery);
     $carsStatement->execute(["carMake" => $carMake, 
-                                  "carID" => $carID, 
-                                  "carColour" => $carColour, 
-                                  "carYear" => $carYear, 
-                                  "carPrice" => $carPrice]);
+                              "carID" => $carID, 
+                              "carColour" => $carColour, 
+                              "carYear" => $carYear, 
+                              "carPrice" => $carPrice]);
     if (!$carsStatement) die("Fatal error."); 
     $carNumber = $this->db->lastInsertId();
     return $carNumber;
@@ -23,17 +23,17 @@ class CarModel extends AbstractModel {
 
   public function carEdit($carID, $carNewModel, $carNewColour, $carNewYear, $carNewPrice) {
     $carsQuery = "UPDATE Cars SET carID = :carID,
-                                            carColour = :carColour, 
-                                            carYear = :carYear, 
-                                            carPrice = :carPrice,
-                                            carMake = :carMake 
-                                            WHERE carID = :carID";
+                                  carColour = :carColour, 
+                                  carYear = :carYear, 
+                                  carPrice = :carPrice,
+                                  carMake = :carMake 
+                                  WHERE carID = :carID";
     $carsStatement = $this->db->prepare($carsQuery);
     $carsParameters = ["carMake" => $carNewMake,
-                            "carColour" => $carNewColour,
-                            "carYear" => $carNewYear,
-                            "carPrice" => $carNewPrice,
-                            "carID" => $carID];
+                       "carColour" => $carNewColour,
+                       "carYear" => $carNewYear,
+                       "carPrice" => $carNewPrice,
+                       "carID" => $carID];
                             
     $carsResult = $carsStatement->execute($carsParameters);
     if (!$carsResult) die($this->db->errorInfo()[2]);

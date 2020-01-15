@@ -7,57 +7,24 @@ use RentalCar\Exceptions\NotFoundException;
 use PDO;
 
 class CarMainModel extends AbstractModel {
-  public function customerList() {
-    $customerRows = $this->db->query("SELECT * FROM Customers");
-    if (!$customerRows) die($this->db->errorInfo());
+  public function carList() {
+    $carRows = $this->db->query("SELECT * FROM Cars");
+    if (!$carRows) die($this->db->errorInfo());
       
-    $customers = [];
-    foreach ($customerRows as $customerRow) {
-      $customerNumber = htmlspecialchars($customerRow["customerNumber"]);
-      $customerName = htmlspecialchars($customerRow["customerName"]);
-      $customerID = htmlspecialchars($customerRow["customerID"]);
-      $customerAddress = htmlspecialchars($customerRow["customerAddress"]);
-      $customerPostal = htmlspecialchars($customerRow["customerPostal"]);
-      $customerPhone = htmlspecialchars($customerRow["customerPhone"]);
-      $customer = ["customerNumber" => $customerNumber,
-                   "customerName" => $customerName,
-                   "customerID" => $customerID,
-                   "customerAddress" => $customerAddress,
-                   "customerPostal" => $customerPostal,
-                   "customerPhone" => $customerPhone];        
-       
-                   
-      $accountsQuery = "SELECT * FROM Accounts WHERE customerNumber = :customerNumber";
-      $accountsStatement = $this->db->prepare($accountsQuery);
-      $accountsResult = $accountsStatement->execute(["customerNumber" => $customerNumber]);
-      if (!$accountsResult) die($this->db->errorInfo());
-      $accountsRows = $accountsStatement->fetchAll();
-
-      $accounts = [];
-      foreach ($accountsRows as $accountRow) {
-        $accountNumber = htmlspecialchars($accountRow["accountNumber"]);
-        $account = ["accountNumber" => $accountNumber];
-        
-        $balanceQuery = "SELECT SUM(amount) FROM Events WHERE accountNumber = :accountNumber";
-        $balanceStatement = $this->db->prepare($balanceQuery);
-        $balanceResult = $balanceStatement->execute(["accountNumber" => $accountNumber]);
-        if (!$balanceResult) die($this->db->errorInfo());
-
-        $balanceRows = $balanceStatement->fetchAll();
-        $accountBalance = htmlspecialchars($balanceRows[0]["SUM(amount)"]);
-        
-        if ($accountBalance === "") {
-          $accountBalance = "0";
-        }
-
-        $account["accountBalance"] = $accountBalance;
-        $accounts[] = $account;
-      }
-
-      $customer["accounts"] = $accounts;
-      $customers[] = $customer;
-    }
-    var_dump ($customers);
-    return $customers;
-  }
+    $cars = [];
+    foreach ($carRows as $carRow) {
+      $carMake = htmlspecialchars($carRow["carMake"]);
+      $carID = htmlspecialchars($carRow["carID"]);
+      $carColour = htmlspecialchars($carRow["carColour"]);
+      $carYear = htmlspecialchars($carRow["carYear"]);
+      $carPrice = htmlspecialchars($carRow["carPrice"]);
+      $car = ["carMake" => $carMake,
+                   "carID" => $carID,
+                   "customerColour" => $carColour,
+                   "carYear" => $carYear,
+                   "carPrice" => $carPrice];      
+       $cars[] = $car;      
+    }    
+    return $cars;
+  } 
 }

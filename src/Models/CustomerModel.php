@@ -2,7 +2,6 @@
 
 namespace RentalCar\Models;
 
-//use Bank\Domain\Bank;
 use RentalCar\Exceptions\DbException;
 use RentalCar\Exceptions\NotFoundException;
 use PDO;
@@ -17,7 +16,7 @@ class CustomerModel extends AbstractModel {
                                   "customerAddress" => $customerAddress, 
                                   "customerPostal" => $customerPostal, 
                                   "customerPhone" => $customerPhone]);
-    if (!$customersStatement) die("Fatal error."); // $this->db->errorInfo());
+    if (!$customersStatement) die("Fatal error."); 
     $customerNumber = $this->db->lastInsertId();
     return $customerNumber;
   }

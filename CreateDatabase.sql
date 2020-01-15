@@ -16,10 +16,10 @@ CREATE TABLE Events (carID INTEGER NOT NULL,
                      FOREIGN KEY (carID) REFERENCES Cars(carID));
 
 INSERT INTO Customers(customerName, customerID, customerAddress, customerPostal, customerPhone)
-  VALUES ('Philip Krook', '8612160575', 'Skolvägen 13a', '184 30 Åkersberga', '0704253487')
+  VALUES ('Philip Krook', '8612160575', 'Skolvägen 13a', '184 30 Åkersberga', '0704253487');
 
 INSERT INTO Cars(carMake, carID, carColour, carYear, carPrice)
-  VALUES ('Toyota', 'XYX123', 'Black', '2012', '100')
+  VALUES ('Toyota', 'XYX123', 'Black', '2012', '100');
 
 /*
 SELECT * FROM Customers;
