@@ -7,7 +7,7 @@ use RentalCar\Models\CustomerModel;
 
 class CustomerController extends AbstractController {
   public function customerAdd() {
-    return $this->render("AddCustomer.twig", []);
+    return $this->render("CustomerAdd.twig", []);
   }
     
   public function customerAdded() {
@@ -34,7 +34,7 @@ class CustomerController extends AbstractController {
                    "customerAddress" => $customerAddress,
                    "customerPostal" => $customerPostal,
                    "customerPhone" => $customerPhone];
-    return $this->render("EditCustomer.twig", $properties);
+    return $this->render("CustomerEdit.twig", $properties);
   }
     
   public function customerEdited($customerNumber, $customerOldName, $customerOldAddress, $customerOldPostal, $customerOldPhone) {

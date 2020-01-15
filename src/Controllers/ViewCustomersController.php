@@ -6,8 +6,8 @@ use RentalCar\Models\CustomerMainModel;
 
 class ViewCustomersController extends AbstractController {
   public function customerList(): string {
-    $customerModel = new CustomerMainModel($this->db);
-    $customers = $customerModel->customerList();
+    $customerMainModel = new CustomerMainModel($this->db);
+    $customers = $customerMainModel->customerList();
     $properties = ["customers" => $customers];
     return $this->render("CustomersView.twig", $properties);
   }

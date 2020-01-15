@@ -7,7 +7,7 @@ use RentalCar\Models\CarModel;
 
 class CarController extends AbstractController {
   public function addCar() {
-    return $this->render("AddCar.twig", []);
+    return $this->render("CarAdd.twig", []);
   }
     
   public function carAdded() {

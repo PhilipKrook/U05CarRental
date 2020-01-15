@@ -25,7 +25,7 @@ class CustomerMainModel extends AbstractModel {
                    "customerAddress" => $customerAddress,
                    "customerPostal" => $customerPostal,
                    "customerPhone" => $customerPhone];      
-       $customers[] = $customer;      
+      $customers[] = $customer;      
     }    
     return $customers;
   } 

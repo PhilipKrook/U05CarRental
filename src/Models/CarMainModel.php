@@ -20,7 +20,7 @@ class CarMainModel extends AbstractModel {
       $carPrice = htmlspecialchars($carRow["carPrice"]);
       $car = ["carMake" => $carMake,
                    "carID" => $carID,
-                   "customerColour" => $carColour,
+                   "carColour" => $carColour,
                    "carYear" => $carYear,
                    "carPrice" => $carPrice];      
        $cars[] = $car;      
