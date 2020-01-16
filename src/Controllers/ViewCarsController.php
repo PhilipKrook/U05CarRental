@@ -3,7 +3,6 @@
 namespace RentalCar\Controllers;
 use RentalCar\Models\CarMainModel;
 
-
 class ViewCarsController extends AbstractController {
   public function carList(): string {
     $carMainModel = new CarMainModel($this->db);

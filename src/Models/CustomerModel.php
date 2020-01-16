@@ -7,6 +7,9 @@ use RentalCar\Exceptions\NotFoundException;
 use PDO;
 
 class CustomerModel extends AbstractModel {
+  function __construct($db){
+    parent::__construct($db);
+  }
   public function customerAdd($customerName, $customerID, $customerAddress, $customerPostal, $customerPhone) {
     $customersQuery = "INSERT INTO Customers(customerName, customerID, customerAddress, customerPostal, customerPhone) " .
                       "VALUES(:customerName, :customerID, :customerAddress, :customerPostal, :customerPhone)";
@@ -40,23 +43,12 @@ class CustomerModel extends AbstractModel {
   }
 
   public function customerRemove($customerNumber) {
-    $carsQuery = "SELECT COUNT(*) FROM Cars WHERE customerNumber = :customerNumber";
-    $carsStatement = $this->db->prepare($carsQuery);
-    $carsResult = $carsStatement->execute(["customerNumber" => $customerNumber]);
-    if (!$carsResult) die($this->db->errorInfo()[2]);
-    $carsRows = $carsStatement->fetchAll();
-    $numberOfCars = htmlspecialchars($carsRows[0]["COUNT(*)"]);
-    
-    if ($numberOfCars == 0) {
-      $customersQuery = "DELETE FROM Customers WHERE customerNumber = :customerNumber";
-      $customersStatement = $this->db->prepare($customersQuery);
-      $customersResult = $customersStatement->execute(["customerNumber" => $customerNumber]);
-      if (!$customersResult) die($this->db->errorInfo()[2]);
-    }
-
-    return $numberOfCars;
+    $customersQuery = "DELETE FROM Customers WHERE customerNumber = :customerNumber";
+    $customersStatement = $this->db->prepare($customersQuery);
+    $customersResult = $customersStatement->execute(["customerNumber" => $customerNumber]);
+    if (!$customersResult) die($this->db->errorInfo()[2]);
   }  
-
+}
  /* public function carAdd($customerNumber) {
     $carsQuery = "INSERT INTO Cars(customerNumber) VALUES(:customerNumber)";
     $carsStatement = $this->db->prepare($carsQuery);
@@ -65,4 +57,3 @@ class CustomerModel extends AbstractModel {
     $carID = $this->db->lastInsertId();
     return $carID;
   }  */
-}

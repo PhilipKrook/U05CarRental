@@ -6,6 +6,6 @@ use RentalCar\Exceptions\DbException;
 use RentalCar\Exceptions\NotFoundException;
 use PDO;
 
-class CheckInModel extends AbstractModel {
-    public function checkInList() {} 
+class HistoryModel extends AbstractModel {
+    public function historyList() {} 
   }

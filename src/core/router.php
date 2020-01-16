@@ -27,7 +27,6 @@ class Router {
       //exit;
       $map = [];
       $params = isset($info["params"]) ? $info["params"] : null;      
-      
       if ($this->match($route, $path, $params, $map)) {
         $controllerName = '\RentalCar\Controllers\\' .
         $info["controller"] . "Controller";
@@ -49,13 +48,11 @@ class Router {
         
         $routeName = $routeArray[$index];
         $pathName = $pathArray[$index];
-
         if ((strlen($routeName) > 0) && $routeName[0] === ":") {
-          
           $key = substr($routeName, 1);
           $value = $pathName;
-          
-         
+          $map[$key] = $value;
+
           if (($params != null) && isset($params[$key]) &&
               !$this->typeMatch($value, $params[$key])) {
             return false;
@@ -77,7 +74,8 @@ class Router {
   private function typeMatch($value, $type) {
     switch ($type) {
       case "number": 
-        return preg_match('/^[0-9]+$/', $value);
+        return true;
+        //return preg_match('/^[0-9]+$/', $value);
     
       case "string":
         return preg_match('/^[%a-zA-Z0-9]+$/', $value);

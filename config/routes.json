@@ -9,23 +9,27 @@
   },
   "checkIn": {
     "controller": "CheckIn",
-    "method": "checkIn"
+    "method": "checkInList"
   },
   "checkOut": {
     "controller": "CheckOut",
-    "method": "checkOut"
+    "method": "checkOutList"
   },
-  "CustomerAdd": {
-    "controller": "Customer",
-    "method": "CustomerAdd"
+  "history": {
+    "controller": "History",
+    "method": "historyList"
   },
-  "CustomerAdded": {
+  "customerAdd": {
     "controller": "Customer",
-    "method": "CustomerAdded"
+    "method": "customerAdd"
   },
-  "CustomerEdit/:customerNumber/:customerName/:customerAddress/:customerPostal/:customerPhone": {
+  "customerAdded": {
     "controller": "Customer",
-    "method": "CustomerEdit",
+    "method": "customerAdded"
+  },
+  "customerEdit/:customerNumber/:customerName/:customerAddress/:customerPostal/:customerPhone": {
+    "controller": "Customer",
+    "method": "customerEdit",
     "params": {
       "customerNumber": "number",
       "customerName": "string",
@@ -34,9 +38,9 @@
       "customerPhone": "number"
     }
   },
-  "CustomerEdited/:customerNumber/:customerName/:customerAddress/:customerPostal/:customerPhone": {
+  "customerEdited/:customerNumber/:customerName/:customerAddress/:customerPostal/:customerPhone": {
     "controller": "Customer",
-    "method": "CustomerEdited",
+    "method": "customerEdited",
     "params": {
       "customerNumber": "number",
       "customerName": "string",
@@ -45,24 +49,20 @@
       "customerPhone": "number"
     }
   },
-  "CustomerRemove/:customerNumber/:customerName": {
+  "customerRemove/:customerNumber": {
     "controller": "Customer",
-    "method": "CustomerRemove",
+    "method": "customerRemove",
     "params": {
-      "customerNumber": "number",
-      "customerName": "string",
-      "customerAddress": "string",
-      "customerPostal": "string",
-      "customerPhone": "number"
+      "customerNumber": "number"      
     }
   },
   "Cars": {
     "controller": "Car",
     "method": "carsList"
   },
-  "CarAdd/:carMake/:carColour/:carID/:carYear/:carPrice": {
+  "carAdd/:carMake/:carColour/:carID/:carYear/:carPrice": {
     "controller": "Car",
-    "method": "CarAdd",
+    "method": "carAdd",
     "params": {
       "carID": "string",
       "carMake": "string",
@@ -71,13 +71,13 @@
       "carPrice": "number"
     }
   },  
-  "CarAdded": {
+  "carAdded": {
     "controller": "Car",
-    "method": "CarAdded"
+    "method": "carAdded"
   },  
-  "CarEdit/:carID/:carMake/:carColour/:carYear/:carPrice": {
+  "carEdit/:carID/:carMake/:carColour/:carYear/:carPrice": {
     "controller": "Car",
-    "method": "CarEdit",
+    "method": "carEdit",
     "params": {
       "carID": "string",
       "carMake": "string",
@@ -86,9 +86,9 @@
       "carPrice": "number"
     }
   },
-  "CarEdited/:carID/:carMake/:carColour/:carYear/:carPrice": {
+  "carEdited/:carID/:carMake/:carColour/:carYear/:carPrice": {
     "controller": "Car",
-    "method": "CarEdited",
+    "method": "carEdited",
     "params": {
       "carID": "string",
       "carMake": "string",
@@ -97,9 +97,9 @@
       "carPrice": "number"
     }
   },
-  "CarRemove/:carMake/:carColour/:carID/:carYear/:carPrice": {
+  "carRemove/:carMake/:carColour/:carID/:carYear/:carPrice": {
     "controller": "Car",
-    "method": "CarRemove",
+    "method": "carRemove",
     "params": {
       "carID": "string",
       "carMake": "string",
