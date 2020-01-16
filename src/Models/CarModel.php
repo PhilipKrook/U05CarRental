@@ -7,6 +7,9 @@ use RentalCar\Exceptions\NotFoundException;
 use PDO;
 
 class CarModel extends AbstractModel {
+  function __construct($db){
+    parent::__construct($db);
+  }
   public function carAdd($carMake, $carID, $carColour, $carYear, $carPrice) {
     $carsQuery = "INSERT INTO Cars(carMake, carID, carColour, carYear, carPrice) " .
                       "VALUES(:carMake, :carID, :carColour, :carYear, :carPrice)";
@@ -40,21 +43,10 @@ class CarModel extends AbstractModel {
   }
 
   public function carRemove($carID) {
-    $carsQuery = "SELECT COUNT(*) FROM Cars WHERE carID = :carID";
+    $carsQuery = "DELETE FROM Cars WHERE carID = :carID";
     $carsStatement = $this->db->prepare($carsQuery);
     $carsResult = $carsStatement->execute(["carID" => $carID]);
     if (!$carsResult) die($this->db->errorInfo()[2]);
-    $carsRows = $carsStatement->fetchAll();
-    $numberOfCars = htmlspecialchars($carsRows[0]["COUNT(*)"]);
-    
-    if ($numberOfCars == 0) {
-      $carsQuery = "DELETE FROM Cars WHERE carID = :carID";
-      $carsStatement = $this->db->prepare($carsQuery);
-      $carsResult = $carsStatement->execute(["carID" => $carID]);
-      if (!$carsResult) die($this->db->errorInfo()[2]);
-    }
-
-    return $numberOfCars;
   }  
 
   /* public function carAdd($carID) {

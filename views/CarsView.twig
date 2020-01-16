@@ -24,13 +24,17 @@
       <TD>{{car.carPrice}}</TD>
       <TD>FREE</TD>
       <TD>DATA</TD>
-      <TD><form method="post" action="/CarEdit/{{car.carID}}/{{car.carMake}}/{{car.carColour}}/{{car.carYear}}/{{car.carPrice}}">
+      <TD><form method="post" action="/carEdit/{{car.carID}}/
+                                               {{car.carMake}}/
+                                               {{car.carColour}}/
+                                               {{car.carYear}}/
+                                               {{car.carPrice}}">
             <input type="submit" style="width:100%" value="Edit">
           </form>
         </TD>
         <TD>
-          <form method="post" action="/CustomerRemove/{{customer.customerNumber}}/{{customer.customerName}}"
-                onsubmit="return confirm(‘Are you sure you want to remove customer {{customer.customerName}}?’)">
+          <form method="post" action="/carRemove/{{car.carID}}"
+                onsubmit="return confirm('Are you sure you want to remove car {{car.carMake}}?')">
             <input type="submit" style="width:100%" value="Remove">
           </form>
         </TD>
@@ -38,7 +42,11 @@
    {% endfor %}
 </TABLE>
   </br>
-  <form method="post" action="/CarAdd/{{car.carID}}/{{car.carMake}}/{{car.carColour}}/{{car.carYear}}/{{car.carPrice}}">
+  <form method="post" action="/carAdd/{{car.carID}}/
+                                      {{car.carMake}}/
+                                      {{car.carColour}}/
+                                      {{car.carYear}}/
+                                      {{car.carPrice}}">
     <input type="submit" style="width:50%" value="Add Car">
   </form>
   <form method="post" action="/">

@@ -58,7 +58,7 @@
   },
   "Cars": {
     "controller": "Car",
-    "method": "carsList"
+    "method": "carList"
   },
   "carAdd/:carMake/:carColour/:carID/:carYear/:carPrice": {
     "controller": "Car",
@@ -97,15 +97,11 @@
       "carPrice": "number"
     }
   },
-  "carRemove/:carMake/:carColour/:carID/:carYear/:carPrice": {
+  "carRemove/:carID": {
     "controller": "Car",
     "method": "carRemove",
     "params": {
-      "carID": "string",
-      "carMake": "string",
-      "carColour": "string",
-      "carYear": "number",
-      "carPrice": "number"
+      "carID": "string"
     }
   },
   "": {

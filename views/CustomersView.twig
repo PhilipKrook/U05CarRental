@@ -22,7 +22,10 @@
       <TD>{{customer.customerAddress}}</TD>
       <TD>{{customer.customerPostal}}</TD>
       <TD>{{customer.customerPhone}}</TD>      
-      <TD><form method="post" action="/CarEdit/{{car.carID}}/{{car.carMake}}/{{car.carColour}}/{{car.carYear}}/{{car.carPrice}}">
+      <TD><form method="post" action="/customerEdit/{{customer.customerName}}/
+                                                    {{customer.customerAddress}}/
+                                                    {{customer.customerPostal}}/
+                                                    {{customer.customerPhone}}">
            <input type="submit" style="width:100%" value="Edit">
           </form>
       </TD>
@@ -35,8 +38,12 @@
    {% endfor %}
 </TABLE>
   </br>
-  <form method="post" action="/CarAdd/{{car.carID}}/{{car.carMake}}/{{car.carColour}}/{{car.carYear}}/{{car.carPrice}}">
-    <input type="submit" style="width:50%" value="Add Car">
+  <form method="post" action="/customerAdd/{{customer.customerName}}/
+                                           {{customer.customerID}}/
+                                           {{customer.customerAddress}}/
+                                           {{customer.customerPostal}}/
+                                           {{customer.customerPhone}}">
+    <input type="submit" style="width:50%" value="Add Customer">
   </form>
   <form method="post" action="/">
     <input type="submit" style="width:50%" value="Main Menu">

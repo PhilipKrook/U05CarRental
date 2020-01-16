@@ -5,8 +5,6 @@ namespace RentalCar\Core;
 use RentalCar\Controllers\ErrorController;
 use RentalCar\Controllers\CustomerController;
 use RentalCar\Utils\DependencyInjector;
-    
-
 
 class Router {
   private $di;
