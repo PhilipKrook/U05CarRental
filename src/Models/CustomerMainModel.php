@@ -13,18 +13,16 @@ class CustomerMainModel extends AbstractModel {
       
     $customers = [];
     foreach ($customerRows as $customerRow) {
-      $customerNumber = htmlspecialchars($customerRow["customerNumber"]);
-      $customerName = htmlspecialchars($customerRow["customerName"]);
       $customerID = htmlspecialchars($customerRow["customerID"]);
+      $customerName = htmlspecialchars($customerRow["customerName"]);
       $customerAddress = htmlspecialchars($customerRow["customerAddress"]);
       $customerPostal = htmlspecialchars($customerRow["customerPostal"]);
       $customerPhone = htmlspecialchars($customerRow["customerPhone"]);
-      $customer = ["customerNumber" => $customerNumber,
-                   "customerName" => $customerName,
-                   "customerID" => $customerID,
-                   "customerAddress" => $customerAddress,
-                   "customerPostal" => $customerPostal,
-                   "customerPhone" => $customerPhone];      
+      $customer = ["customerID" => $customerID,
+                  "customerName" => $customerName,                   
+                  "customerAddress" => $customerAddress,
+                  "customerPostal" => $customerPostal,
+                  "customerPhone" => $customerPhone];      
       $customers[] = $customer;      
     }    
     return $customers;

@@ -1,17 +1,12 @@
+<h1>Customer edited</h1>
+
+
+
 {% block customerEdited %}
   <h1>Customer Edited</h1>
 
-  <p>The name of the customer with number {{customerNumber}}
-     has been changed from {{customerOldName}} to {{customerNewName}}.</p>
-
-  <p>The address of the customer with number {{customerNumber}}
-     has been changed from {{customerOldAddress}} to {{customerNewAddress}}.</p>
-
-  <p>The postal address of the customer with number {{customerNumber}}
-     has been changed from {{customerOldPostal}} to {{customerNewPostal}}.</p>
-
-  <p>The phone number of the customer with number {{customerNumber}}
-     has been changed from {{customerOldPhone}} to {{customerNewPhone}}.</p>
+  <p>The info for the customer with ID {{customerID}}
+     has been changed.</p>
 
   <form method="post" action="/">
     <input type="submit" value="Ok">

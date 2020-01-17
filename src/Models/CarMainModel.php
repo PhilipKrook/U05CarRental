@@ -13,16 +13,16 @@ class CarMainModel extends AbstractModel {
       
     $cars = [];
     foreach ($carRows as $carRow) {
-      $carMake = htmlspecialchars($carRow["carMake"]);
       $carID = htmlspecialchars($carRow["carID"]);
+      $carMake = htmlspecialchars($carRow["carMake"]);
       $carColour = htmlspecialchars($carRow["carColour"]);
       $carYear = htmlspecialchars($carRow["carYear"]);
       $carPrice = htmlspecialchars($carRow["carPrice"]);
-      $car = ["carMake" => $carMake,
-                   "carID" => $carID,
-                   "carColour" => $carColour,
-                   "carYear" => $carYear,
-                   "carPrice" => $carPrice];      
+      $car = ["carID" => $carID,
+              "carMake" => $carMake,              
+              "carColour" => $carColour,
+              "carYear" => $carYear,
+              "carPrice" => $carPrice];      
        $cars[] = $car;      
     }    
     return $cars;

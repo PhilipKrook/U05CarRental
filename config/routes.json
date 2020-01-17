@@ -27,49 +27,42 @@
     "controller": "Customer",
     "method": "customerAdded"
   },
-  "customerEdit/:customerNumber/:customerName/:customerAddress/:customerPostal/:customerPhone": {
+  "customerEdit/:customerID/:customerName/:customerAddress/:customerPostal/:customerPhone": {
     "controller": "Customer",
     "method": "customerEdit",
     "params": {
-      "customerNumber": "number",
+      "customerID": "number",
       "customerName": "string",
       "customerAddress": "string",
       "customerPostal": "string",
       "customerPhone": "number"
     }
   },
-  "customerEdited/:customerNumber/:customerName/:customerAddress/:customerPostal/:customerPhone": {
+  "customerEdited/:customerID/:customerName/:customerAddress/:customerPostal/:customerPhone": {
     "controller": "Customer",
     "method": "customerEdited",
     "params": {
-      "customerNumber": "number",
+      "customerID": "number",
       "customerName": "string",
       "customerAddress": "string",
       "customerPostal": "string",
       "customerPhone": "number"
     }
   },
-  "customerRemove/:customerNumber": {
+  "customerRemove/:customerName": {
     "controller": "Customer",
     "method": "customerRemove",
     "params": {
-      "customerNumber": "number"      
+      "customerName": "number"      
     }
   },
   "Cars": {
     "controller": "Car",
     "method": "carList"
   },
-  "carAdd/:carMake/:carColour/:carID/:carYear/:carPrice": {
+  "carAdd": {
     "controller": "Car",
-    "method": "carAdd",
-    "params": {
-      "carID": "string",
-      "carMake": "string",
-      "carColour": "string",
-      "carYear": "number",
-      "carPrice": "number"
-    }
+    "method": "carAdd"
   },  
   "carAdded": {
     "controller": "Car",

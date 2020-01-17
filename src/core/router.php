@@ -14,12 +14,10 @@ class Router {
     $this->di = $di;
     $json = file_get_contents(__DIR__ . "/../../config/routes.json");
     $this->routeMap = json_decode($json, true);
-  }
-  
+  }  
   public function route(Request $request): string {
     $result = "";
     $path = $request->getPath();
-
     foreach ($this->routeMap as $route => $info) {
       // echo "<pre>". print($info) . "</pre>";
       //exit;
@@ -33,6 +31,7 @@ class Router {
         return call_user_func_array([$controller, $methodName], $map);
       }
     }
+  // return "route error";
   }
 
   private function match($route, $path, $params, &$map) {      
@@ -54,17 +53,14 @@ class Router {
           if (($params != null) && isset($params[$key]) &&
               !$this->typeMatch($value, $params[$key])) {
             return false;
-          }
-          
+          }          
         }
         else if ($routeName !== $pathName) {
           return false;
         }
-      }
-      
+      }      
       return true;
-    }
-    
+    }    
     return false;
   }
 
@@ -73,12 +69,10 @@ class Router {
     switch ($type) {
       case "number": 
         return true;
-        //return preg_match('/^[0-9]+$/', $value);
-    
+        //return preg_match('/^[0-9]+$/', $value);    
       case "string":
-        return preg_match('/^[%a-zA-Z0-9]+$/', $value);
+        return true; //return preg_match('/^[%a-zA-Z0-9]+$/', $value);
     }
-
     return true;
   }
 }

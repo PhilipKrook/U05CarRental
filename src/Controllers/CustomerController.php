@@ -12,24 +12,23 @@ class CustomerController extends AbstractController {
     
   public function customerAdded() {
     $form = $this->request->getForm();
-    $customerName = $form["customerName"];
     $customerID = $form["customerID"];
+    $customerName = $form["customerName"];
     $customerAddress = $form["customerAddress"];
     $customerPostal = $form["customerPostal"];
     $customerPhone = $form["customerPhone"];
     $customerModel = new CustomerModel($this->db);
-    $customerNumber = $customerModel->customerAdd($customerName, $customerID, $customerAddress, $customerPostal, $customerPhone);
-    $properties = ["customerNumber" => $customerNumber,
+    $customerModel = $customerModel->customerAdd($customerID, $customerName, $customerAddress, $customerPostal, $customerPhone);
+    $properties = ["customerID" => $customerID,
                    "customerName" => $customerName,
-                   "customerID" => $customerID,
                    "customerAddress" => $customerAddress,
                    "customerPostal" => $customerPostal,
                    "customerPhone" => $customerPhone];
     return $this->render("CustomerAdded.twig", $properties);
   }    
 
-  public function customerEdit($customerNumber, $customerName, $customerAddress, $customerPostal, $customerPhone) {      
-    $properties = ["customerNumber" => $customerNumber,
+  public function customerEdit($customerID, $customerName, $customerAddress, $customerPostal, $customerPhone) {      
+    $properties = ["customerID" => $customerID,
                    "customerName" => $customerName,
                    "customerAddress" => $customerAddress,
                    "customerPostal" => $customerPostal,
@@ -37,16 +36,15 @@ class CustomerController extends AbstractController {
     return $this->render("CustomerEdit.twig", $properties);
   }
     
-  public function customerEdited($customerNumber, $customerOldName, $customerOldAddress, $customerOldPostal, $customerOldPhone) {
+  public function customerEdited($customerID, $customerOldName, $customerOldAddress, $customerOldPostal, $customerOldPhone) {
     $form = $this->request->getForm();
     $customerNewName = $form["customerName"];
     $customerNewAddress = $form["customerAddress"];
     $customerNewPostal = $form["customerPostal"];
     $customerNewPhone = $form["customerPhone"];
-    echo $customerOldName;
     $customerModel = new CustomerModel($this->db);
-    $customerModel->customerEdit($customerNumber, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone);
-    $properties = ["customerNumber" => $customerNumber,
+    $customerModel->customerEdit($customerID, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone);
+    $properties = ["customerID" => $customerID,
                    "customerOldName" => $customerOldName,
                    "customerNewName" => $customerNewName,
                    "customerOldAddress" => $customerOldAddress,
@@ -58,20 +56,10 @@ class CustomerController extends AbstractController {
     return $this->render("CustomerEdited.twig", $properties);
   }    
     
-  public function customerRemove($customerNumber) {
+  public function customerRemove($customerID) {
     $customerModel = new CustomerModel($this->db);
-    $customerModel->customerRemove($customerNumber, $this->db);
-    $properties = ["customerNumber" => $customerNumber];                   
+    $customerModel->customerRemove($customerID, $this->db);
+    $properties = ["customerID" => $customerID];                   
     return $this->render("CustomerRemoved.twig", $properties);
   }
-
-
-  /*
-  public function customerAdd($customerNumber, $customerName) {
-    $customerModel = new CustomerModel($this->db);
-    $customerNumber = $customerModel->customerAdd($customerNumber);
-    $properties = ["customerNumber" => $customerNumber,
-                   "customerName" => $customerName];
-    return $this->render("CustomerAdded.twig", $properties);
-  }*/
 }

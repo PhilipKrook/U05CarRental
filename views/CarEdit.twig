@@ -3,7 +3,8 @@
 
 <table border>
 <tr>
-  <form method="post" action="/carEdited/{{carID}}/{{carMake}}/{{carColour}}/{{carYear}}/{{carPhone}}">
+  <form method="post" action="/carEdited/{{carID}}/{{carMake}}/{{carColour}}/{{carYear}}/{{carPrice}}">
+    <input type="hidden" value="{{carID}}" />
     <td>Make: <input type="text" name="carMake" value="{{carMake}}" autofocus="autofocus"></td>
     <td>Colour: <input type="text" name="carColour" value="{{carColour}}" autofocus="autofocus"></td>
     <td>Year: <input type="text" name="carYear" value="{{carYear}}" autofocus="autofocus"></td>

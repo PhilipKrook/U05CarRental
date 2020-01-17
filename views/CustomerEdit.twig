@@ -3,7 +3,8 @@
 
 <table border>
 <tr>
-  <form method="post" action="/customerEdit/{{customerNumber}}/{{customerName}}/{{customerAddress}}/{{customerPostal}}/{{cutomerPhone}}">
+  <form method="post" action="/customerEdited/{{customerID}}/{{customerName}}/{{customerAddress}}/{{customerPostal}}/{{cutomerPhone}}">
+    <input type="hidden" value="{{customerID}}" />
     <td>Name: <input type="text" name="customerName" value="{{customerName}}" autofocus="autofocus"></td>
     <td>Address: <input type="text" name="customerAddress" value="{{customerAddress}}" autofocus="autofocus"></td>
     <td>Postal Address: <input type="text" name="customerPostal" value="{{customerPostal}}" autofocus="autofocus"></td>

@@ -6,29 +6,30 @@ use RentalCar\Exceptions\NotFoundException;
 use RentalCar\Models\CarModel;
 
 class CarController extends AbstractController {
-  public function addCar() {
+  public function carAdd() {
     return $this->render("CarAdd.twig", []);
   }
     
   public function carAdded() {
     $form = $this->request->getForm();
-    $carMake = $form["carMake"];
     $carID = $form["carID"];
+    $carMake = $form["carMake"];    
     $carColour = $form["carColour"];
     $carYear = $form["carYear"];
     $carPrice = $form["carPrice"];
     $carModel = new CarModel($this->db);
-    $carID = $carMake->addCar($carMake, $carID, $carColour, $carYear, $carPrice);
+    $carModel = $carModel->carAdd($carID, $carMake, $carColour, $carYear, $carPrice);
     $properties = ["carID" => $carID,
-                   "carMake" => $carMake,                   
+                   "carMake" => $carMake,                                    
                    "carColour" => $carColour,
                    "carYear" => $carYear,
                    "carPrice" => $carPrice];
     return $this->render("carAdded.twig", $properties);
-  }    
+  }
 
-  public function editCar($carMake, $carColour, $carYear, $carPrice) {
-    $properties = ["carMake" => $carMake,
+  public function carEdit($carID, $carMake, $carColour, $carYear, $carPrice) {
+    $properties = ["carID" => $carID,
+                   "carMake" => $carMake,
                    "carColour" => $carColour,
                    "carYear" => $carYear,
                    "carPrice" => $carPrice];
@@ -41,11 +42,9 @@ class CarController extends AbstractController {
     $carNewColour = $form["carColour"];
     $carNewYear = $form["carYear"];
     $carNewPrice = $form["carPrice"];
-    echo $carOldMake;
     $carModel = new carModel($this->db);
-    $carModel->editCar($carID, $carNewMake, $carNewColour, $carNewYear, $carNewPrice);
-    $properties = ["carID" => $carID,
-                   "carOldMake" => $carOldMake,
+    $carModel->carEdit($carID, $carNewMake, $carNewColour, $carNewYear, $carNewPrice);
+    $properties = ["carOldMake" => $carOldMake,
                    "carNewMake" => $carNewMake,
                    "carOldColour" => $carOldColour,
                    "carNewColour" => $carNewColour,
@@ -62,18 +61,4 @@ class CarController extends AbstractController {
     $properties = ["carID" => $carID];
     return $this->render("carRemoved.twig", $properties);
   }
-
-
-/*
-  public function addAccount($carID, $carMake) {
-    $carModel = new carModel($this->db);
-    $accountID = $carModel->addAccount($carID);
-    $properties = ["carID" => $carID,
-                   "carMake" => $carMake,
-                   "accountID" => $accountID];
-    return $this->render("AccountAdded.twig", $properties);
-  }
-  */
-
-
 }

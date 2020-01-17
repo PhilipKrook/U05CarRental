@@ -13,48 +13,21 @@ class MainMenuModel extends AbstractModel {
       
     $customers = [];
     foreach ($customerRows as $customerRow) {
-      $customerNumber = htmlspecialchars($customerRow["customerNumber"]);
-      $customerName = htmlspecialchars($customerRow["customerName"]);
       $customerID = htmlspecialchars($customerRow["customerID"]);
+      $customerName = htmlspecialchars($customerRow["customerName"]);
       $customerAddress = htmlspecialchars($customerRow["customerAddress"]);
       $customerPostal = htmlspecialchars($customerRow["customerPostal"]);
       $customerPhone = htmlspecialchars($customerRow["customerPhone"]);
-      $customer = ["customerNumber" => $customerNumber,
-                   "customerName" => $customerName,
-                   "customerID" => $customerID,
+      $customer = ["customerID" => $customerID,
+                   "customerName" => $customerName,                   
                    "customerAddress" => $customerAddress,
                    "customerPostal" => $customerPostal,
                    "customerPhone" => $customerPhone];        
         
-      $carsQuery = "SELECT * FROM Cars WHERE customerNumber = :customerNumber";
+      $carsQuery = "SELECT * FROM Cars WHERE customerID = :customerID";
       $carsStatement = $this->db->prepare($carsQuery);
-      $carsResult = $carsStatement->execute(["customerNumber" => $customerNumber]);
-      if (!$carsResult) die($this->db->errorInfo());
-      $carsRows = $carsStatement->fetchAll();
-
-      /* $cars = [];
-      foreach ($carsRows as $carRow) {
-        $carID = htmlspecialchars($carRow["carID"]);
-        $car = ["carID" => $carID];
-        
-        $balanceQuery = "SELECT SUM(amount) FROM Events WHERE accountNumber = :accountNumber";
-        $balanceStatement = $this->db->prepare($balanceQuery);
-        $balanceResult = $balanceStatement->execute(["accountNumber" => $accountNumber]);
-        if (!$balanceResult) die($this->db->errorInfo());
-
-        $balanceRows = $balanceStatement->fetchAll();
-        $accountBalance = htmlspecialchars($balanceRows[0]["SUM(amount)"]);
-        
-        if ($accountBalance === "") {
-          $accountBalance = "0";
-        }
-
-        $account["accountBalance"] = $accountBalance;
-        $accounts[] = $account;
-      }*/
-
-      $customer["accounts"] = $accounts;
-      $customers[] = $customer;
+      $carsResult = $carsStatement->execute(["customerID" => $customerID]);
+      if (!$carsResult) die($this->db->errorInfo());      
     }
       
     return $customers;
