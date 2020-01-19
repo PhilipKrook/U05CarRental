@@ -22,7 +22,7 @@ class CustomerModel extends AbstractModel {
     if (!$customersStatement) die("Fatal error.");
   }
 
-  public function customerEdit($customerID, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone) {
+  public function customerEdit($customerNewID, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone) {
     $customersQuery = "UPDATE Customers SET customerID = :customerID,
                                             customerName = :customerName,
                                             customerAddress = :customerAddress, 
@@ -30,7 +30,7 @@ class CustomerModel extends AbstractModel {
                                             customerPhone = :customerPhone,
                                             WHERE customerID = :customerID";
     $customersStatement = $this->db->prepare($customersQuery);
-    $customersParameters = ["customerID" => $customerID,
+    $customersParameters = ["customerID" => $customerNewID,
                             "customerName" => $customerNewName,
                             "customerAddress" => $customerNewAddress,
                             "customerPostal" => $customerNewPostal,

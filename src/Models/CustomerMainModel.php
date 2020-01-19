@@ -19,10 +19,10 @@ class CustomerMainModel extends AbstractModel {
       $customerPostal = htmlspecialchars($customerRow["customerPostal"]);
       $customerPhone = htmlspecialchars($customerRow["customerPhone"]);
       $customer = ["customerID" => $customerID,
-                  "customerName" => $customerName,                   
-                  "customerAddress" => $customerAddress,
-                  "customerPostal" => $customerPostal,
-                  "customerPhone" => $customerPhone];      
+                   "customerName" => $customerName,                   
+                   "customerAddress" => $customerAddress,
+                   "customerPostal" => $customerPostal,
+                   "customerPhone" => $customerPhone];      
       $customers[] = $customer;      
     }    
     return $customers;

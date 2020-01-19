@@ -4,7 +4,8 @@
 <table border>
 <tr>
   <form method="post" action="/customerEdited/{{customerID}}/{{customerName}}/{{customerAddress}}/{{customerPostal}}/{{cutomerPhone}}">
-    <input type="hidden" value="{{customerID}}" />
+    <!-- <input type="hidden" value="{{customerID}}" /> -->
+    <td>ID: <input type="text" name="customerID" value="{{customerID}}" autofocus="autofocus"></td>
     <td>Name: <input type="text" name="customerName" value="{{customerName}}" autofocus="autofocus"></td>
     <td>Address: <input type="text" name="customerAddress" value="{{customerAddress}}" autofocus="autofocus"></td>
     <td>Postal Address: <input type="text" name="customerPostal" value="{{customerPostal}}" autofocus="autofocus"></td>

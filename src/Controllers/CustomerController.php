@@ -36,15 +36,17 @@ class CustomerController extends AbstractController {
     return $this->render("CustomerEdit.twig", $properties);
   }
     
-  public function customerEdited($customerID, $customerOldName, $customerOldAddress, $customerOldPostal, $customerOldPhone) {
+  public function customerEdited($customerOldID, $customerOldName, $customerOldAddress, $customerOldPostal, $customerOldPhone) {
     $form = $this->request->getForm();
+    $customerNewID = $form["customerID"];
     $customerNewName = $form["customerName"];
     $customerNewAddress = $form["customerAddress"];
     $customerNewPostal = $form["customerPostal"];
     $customerNewPhone = $form["customerPhone"];
     $customerModel = new CustomerModel($this->db);
-    $customerModel->customerEdit($customerID, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone);
-    $properties = ["customerID" => $customerID,
+    $customerModel->customerEdit($customerNewID, $customerNewName, $customerNewAddress, $customerNewPostal, $customerNewPhone);
+    $properties = ["customerOldID" => $customerOldID,
+                   "customerNewID" => $customerNewID,
                    "customerOldName" => $customerOldName,
                    "customerNewName" => $customerNewName,
                    "customerOldAddress" => $customerOldAddress,
