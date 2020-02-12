@@ -1,7 +1,7 @@
 <?php
 
 namespace RentalCar\Controllers;
-use RentalCar\Models\CheckOutModel;
+use RentalCar\Models\CheckInModel;
 
 class CheckInController extends AbstractController {
     public function checkInList(): string {
