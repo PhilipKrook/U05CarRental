@@ -15,6 +15,10 @@
     "controller": "CheckOut",
     "method": "checkOutList"
   },
+  "checkOutDone": {
+    "controller": "CheckOut",
+    "method": "checkOutList"
+  },
   "history": {
     "controller": "History",
     "method": "historyList"

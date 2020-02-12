@@ -1,1 +1,42 @@
-<H1> CHECK OUT </H1>
+{% block checkOut %}
+<h1>Check Out</h1>
+
+<table border style="width:25%">
+  <form method="post" action="/checkOutDone">
+    
+    <!-- Customers -->
+    <tr>
+      <td>Customer: </td>
+      <td>      
+      <select name="customers">
+        {% for customer in customers %}
+          <option value="Customers">{{customer.Name}} {{customer.Address}}</option>
+        {% endfor %}
+      </select>      
+      </td>
+    </tr>
+
+    <!-- Cars -->
+    <tr>
+      <td>Car: </td>
+      <td>
+      <select name="cars">
+        {% for car in cars %}
+          <option value="Cars">{{car.Make}} {{car.Colour}}</option>
+        {% endfor %}
+      </select>
+      </td>
+    </tr>
+    
+    <p>    
+  </form>
+</table>
+
+<form method="post" action="/checkOutDone">
+  <input type="submit" style="width:25%" value="Check Out">
+</form>
+<form method="post" action="/">
+  <input type="submit" style="width:25%" value="Main Menu">
+</form>
+
+{% endblock %}
