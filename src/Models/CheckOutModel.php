@@ -18,7 +18,7 @@ class CheckOutModel extends AbstractModel {
       $carID = htmlspecialchars($carRow["carID"]);
       $carMake = htmlspecialchars($carRow["carMake"]);
       $carColour = htmlspecialchars($carRow["carColour"]);
-      $car = ["carID" => $carID,
+      $car = ["Id" => $carID,
               "Make" => $carMake,              
               "Colour" => $carColour];      
       $customers['cars'][] = $car;      
@@ -31,10 +31,8 @@ class CheckOutModel extends AbstractModel {
     foreach ($customerRows as $customerRow) {
       $customerID = htmlspecialchars($customerRow["customerID"]);
       $customerName = htmlspecialchars($customerRow["customerName"]);
-      $customerAddress = htmlspecialchars($customerRow["customerAddress"]);
-      $customer = ["customerID" => $customerID,
-                   "Name" => $customerName,              
-                   "Address" => $customerAddress];      
+      $customer = ["Id" => $customerID,
+                   "Name" => $customerName];      
       $customers['customers'][] = $customer;      
       }    
       return $customers;
