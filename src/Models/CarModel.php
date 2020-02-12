@@ -27,7 +27,7 @@ class CarModel extends AbstractModel {
                                   carMake = :carMake, 
                                   carColour = :carColour, 
                                   carYear = :carYear,
-                                  carPrice = :carPrice,
+                                  carPrice = :carPrice
                                   WHERE carID = :carID";
     $carsStatement = $this->db->prepare($carsQuery);
     $carsParameters = ["carID" => $carID,
@@ -36,6 +36,7 @@ class CarModel extends AbstractModel {
                        "carYear" => $carNewYear,
                        "carPrice" => $carNewPrice];                            
     $carsResult = $carsStatement->execute($carsParameters);
+    
     if (!$carsResult) die($this->db->errorInfo()[2]);
   }
 

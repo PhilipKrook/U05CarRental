@@ -38,6 +38,7 @@ class CarController extends AbstractController {
     
   public function carEdited($carOldID, $carOldMake, $carOldColour, $carOldYear, $carOldPrice) {
     $form = $this->request->getForm();
+
     $carNewID = $form["carID"];
     $carNewMake = $form["carMake"];
     $carNewColour = $form["carColour"];
@@ -45,6 +46,7 @@ class CarController extends AbstractController {
     $carNewPrice = $form["carPrice"];
     $carModel = new carModel($this->db);
     $carModel->carEdit($carNewID, $carNewMake, $carNewColour, $carNewYear, $carNewPrice);
+
     $properties = ["carOldMake" => $carOldMake,
                    "carNewMake" => $carNewMake,
                    "carOldColour" => $carOldColour,
@@ -53,6 +55,7 @@ class CarController extends AbstractController {
                    "carNewYear" => $carNewYear,
                    "carOldPrice" => $carOldPrice,
                    "carNewPrice" => $carNewPrice];
+
     return $this->render("CarEdited.twig", $properties);
   }    
     

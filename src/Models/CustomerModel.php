@@ -27,7 +27,7 @@ class CustomerModel extends AbstractModel {
                                             customerName = :customerName,
                                             customerAddress = :customerAddress, 
                                             customerPostal = :customerPostal, 
-                                            customerPhone = :customerPhone,
+                                            customerPhone = :customerPhone
                                             WHERE customerID = :customerID";
     $customersStatement = $this->db->prepare($customersQuery);
     $customersParameters = ["customerID" => $customerNewID,
@@ -37,7 +37,6 @@ class CustomerModel extends AbstractModel {
                             "customerPhone" => $customerNewPhone];
                             
     $customersResult = $customersStatement->execute($customersParameters);
-    if (!$customersResult) die($this->db->errorInfo()[2]);
   }
 
   public function customerRemove($customerID) {

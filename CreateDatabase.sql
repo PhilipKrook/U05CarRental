@@ -9,10 +9,7 @@ CREATE TABLE Customers (customerID VARCHAR(256) KEY, customerName VARCHAR(256),
 CREATE TABLE Cars      (carID VARCHAR(256), carMake VARCHAR(256), carColour VARCHAR(256), 
                         carYear VARCHAR(256), carPrice VARCHAR(256));
 
-CREATE TABLE Events (carID INTEGER NOT NULL,
-                     time TIMESTAMP,
-                     amount REAL, -- FLOAT
-                     FOREIGN KEY (carID) REFERENCES Cars(carID));
+CREATE TABLE History   (carID VARCHAR(256) NOT NULL, time TIMESTAMP, customerID VARCHAR(256));
 
 INSERT INTO Customers(customerID, customerName, customerAddress, customerPostal, customerPhone)
   VALUES ('6712200568', 'Emil Nilsson', 'Bergvägen 2', '678 39 hamnstaden', '0708725343');
