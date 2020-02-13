@@ -12,7 +12,10 @@ class CheckOutController extends AbstractController {
       return $this->render("CheckOut.twig", $checkouts);
     }
 
-    public function checkOutDone(): string {
+    public function checkOutDone($carID, $customerID) {
+
+      $checkouts = ["carID" => $carID,
+                   "customerID" => $customerID];
 
       $CheckOutModel = new CheckOutModel($this->db);
       $checkouts = $CheckOutModel->checkOutList();

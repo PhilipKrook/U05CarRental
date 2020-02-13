@@ -10,7 +10,7 @@
       <td>      
       <select name="customers">
         {% for customer in customers %}
-          <option value="Customers">{{customer.Id}} {{customer.Name}}</option>
+          <option value="{{customer.Id}}"> {{customer.Name}}</option>
         {% endfor %}
       </select>      
       </td>
@@ -22,7 +22,7 @@
       <td>
       <select name="cars">
         {% for car in cars %}
-          <option value="Cars">{{car.Id}} {{car.Colour}} {{car.Make}}</option>
+          <option value="{{car.Id}}"> {{car.Colour}} {{car.Make}}</option>
         {% endfor %}
       </select>
       </td>

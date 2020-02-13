@@ -10,6 +10,7 @@ class CheckOutModel extends AbstractModel {
     public function checkOutList() {
 
     $customers = [];
+    
     /* *** Cars *** */
     $carRows = $this->db->query("SELECT * FROM Cars");
     if (!$carRows) die($this->db->errorInfo());
@@ -37,4 +38,8 @@ class CheckOutModel extends AbstractModel {
       }    
       return $customers;
     }
+
+    public function checkOut() {
+      $checkOutQuery = "SELECT Cars GET carID WHERE carID = :carID";
+    }    
 }

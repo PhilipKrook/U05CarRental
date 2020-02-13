@@ -12,6 +12,7 @@
       <TH>Edit Car</TH>
       <TH>Remove Car</TH>
    </TR>
+   
    {% for car in cars %}
    <TR ALIGN="CENTER">
       <TD>{{car.carID}}</TD>
@@ -19,20 +20,21 @@
       <TD>{{car.carColour}}</TD>
       <TD>{{car.carYear}}</TD>
       <TD>{{car.carPrice}}</TD>
-      <TD>FREE</TD>
-      <TD>DATA</TD>
+      <TD>{{car.carCheckedOutBy}}</TD>
+      <TD>{{car.carCheckedOutTime}}</TD>
+
       <TD><form method="post" action="/carEdit/{{car.carID}}/{{car.carMake}}/{{car.carColour}}/{{car.carYear}}/{{car.carPrice}}">
-            <input type="submit" style="width:100%" value="Edit">
+          <input type="submit" style="width:100%" value="Edit">
           </form>
-        </TD>
-        <TD>
-          <form method="post" action="/carRemove/{{car.carID}}"
-                onsubmit="return confirm('Are you sure you want to remove car {{car.carMake}}?')">
-            <input type="submit" style="width:100%" value="Remove">
-          </form>
-        </TD>
+      </TD>
+      <TD><form method="post" action="/carRemove/{{car.carID}}"
+           onsubmit="return confirm('Are you sure you want to remove car {{car.carMake}}?')">
+           <input type="submit" style="width:100%" value="Remove">
+           </form>
+      </TD>
    </TR>
    {% endfor %}
+
 </TABLE>
   </br>
   <form method="post" action="/carAdd">
