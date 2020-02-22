@@ -1,0 +1,49 @@
+{% block mainMenu %}
+  <style>
+    .column {
+      width: 20mm;
+    }
+    .button {
+      width: 100%;
+    }
+  </style>
+
+  <table border>
+    <tr>
+      <td colspan="8"><h1>Car Rental</h1></td>
+    </tr>
+
+    <!-- nya -->
+    <tr><td colspan="3">
+    <form action="/viewCustomers" method="post">
+      <input type="submit" style="width:100%" value="Customers">
+    </form>  
+    </td></tr>
+
+    <tr><td colspan="3">
+    <form action="/viewCars" method="post">
+      <input type="submit" style="width:100%" value="Cars">
+    </form>  
+    </td></tr>
+
+        <tr><td colspan="3">
+    <form action="/checkIn" method="post">
+      <input type="submit" style="width:100%" value="Check in car">
+    </form>  
+    </td></tr>
+
+        <tr><td colspan="3">
+    <form action="/checkOut" method="post">
+      <input type="submit" style="width:100%" value="Check out car">
+    </form>  
+    </td></tr>
+
+        <tr><td colspan="3">
+    <form action="/history" method="post">
+      <input type="submit" style="width:100%" value="History">
+    </form>  
+    </td></tr>
+    <!-- ** -->
+
+  </table>
+{% endblock %}
